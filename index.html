@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artemis Modern Aesthetics — Chatbot Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #1B2A4A;
+  --navy-light: #2A3D66;
+  --gold: #C4A265;
+  --gold-light: #D4B87A;
+  --white: #FFFFFF;
+  --gray-50: #F9FAFB;
+  --gray-100: #F5F5F5;
+  --gray-200: #E5E7EB;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+  --gray-500: #6B7280;
+  --gray-600: #4B5563;
+  --gray-700: #374151;
+  --gray-800: #1F2937;
+  --teal: #2A7B88;
+  --teal-dark: #1F6570;
+  --teal-light: #E0F2F4;
+  --red-soft: #DC4A68;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(27,42,74,0.08);
+  --shadow-md: 0 4px 12px rgba(27,42,74,0.1);
+  --shadow-lg: 0 8px 30px rgba(27,42,74,0.15);
+  --shadow-xl: 0 16px 48px rgba(27,42,74,0.2);
+}
+
+body {
+  font-family: var(--font);
+  color: var(--gray-800);
+  background: var(--gray-50);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ===== LANDING PAGE ===== */
+.landing-header {
+  background: var(--navy);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.logo-text span {
+  color: var(--gold);
+  font-weight: 400;
+  font-size: 12px;
+  display: block;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: -2px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.header-nav a {
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.header-nav a:hover { color: var(--gold); }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #354B75 100%);
+  padding: 100px 24px 120px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,162,101,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(42,123,136,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(196,162,101,0.15);
+  border: 1px solid rgba(196,162,101,0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gold-light);
+  margin-bottom: 28px;
+  letter-spacing: 0.02em;
+}
+
+.hero-badge svg { width: 14px; height: 14px; }
+
+.hero h1 {
+  color: var(--white);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.hero p {
+  color: rgba(255,255,255,0.7);
+  font-size: clamp(16px, 2vw, 19px);
+  max-width: 540px;
+  margin: 0 auto 36px;
+  line-height: 1.65;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-outline:hover { border-color: var(--gold); background: rgba(196,162,101,0.08); }
+
+/* DEMO NOTICE */
+.demo-notice {
+  background: var(--teal-light);
+  border: 1px solid rgba(42,123,136,0.2);
+  padding: 14px 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--teal-dark);
+  font-weight: 500;
+}
+
+.demo-notice strong { color: var(--teal); }
+
+/* PRODUCTS SECTION */
+.products-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  color: var(--gray-500);
+  font-size: 16px;
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-200);
+  padding: 24px;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.product-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.product-card .price {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+
+.product-card p {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.product-card-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s;
+}
+
+.product-card-cta:hover { gap: 8px; }
+
+/* FEATURES STRIP */
+.features-strip {
+  background: var(--navy);
+  padding: 60px 24px;
+}
+
+.features-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+
+.feature-item {
+  text-align: center;
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(196,162,101,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.feature-item h4 {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.feature-item p {
+  color: rgba(255,255,255,0.55);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* FOOTER */
+.landing-footer {
+  background: var(--gray-100);
+  border-top: 1px solid var(--gray-200);
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.landing-footer p {
+  font-size: 13px;
+  color: var(--gray-400);
+  margin-bottom: 6px;
+}
+
+.landing-footer a {
+  color: var(--gray-400);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.landing-footer a:hover { color: var(--teal); }
+
+/* ===== CHATBOT WIDGET ===== */
+
+/* FLOATING BUTTON */
+.chat-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+  border: 2px solid rgba(196,162,101,0.3);
+}
+
+.chat-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-xl);
+}
+
+.chat-toggle.hidden { display: none; }
+
+.chat-toggle svg {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s;
+}
+
+/* Pulse animation */
+.chat-toggle::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  opacity: 0;
+  animation: chatPulse 3s ease-in-out infinite;
+}
+
+@keyframes chatPulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.15); }
+}
+
+/* Notification badge */
+.chat-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--red-soft);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--white);
+}
+
+/* CHAT WINDOW */
+.chat-window {
+  position: fixed;
+  bottom: 96px;
+  right: 24px;
+  width: 380px;
+  height: 520px;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  overflow: hidden;
+  transform: scale(0.85) translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s ease;
+  transform-origin: bottom right;
+}
+
+.chat-window.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* CHAT HEADER */
+.chat-header {
+  background: var(--navy);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.chat-header-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(196,162,101,0.15);
+  border: 1.5px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chat-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-header-info h3 {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.chat-header-info p {
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chat-header-info p::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ADE80;
+  display: inline-block;
+}
+
+.chat-close {
+  color: rgba(255,255,255,0.5);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, background 0.2s;
+}
+
+.chat-close:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.1);
+}
+
+.chat-close svg { width: 20px; height: 20px; }
+
+/* CHAT MESSAGES */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  scroll-behavior: smooth;
+  background: var(--gray-50);
+}
+
+.chat-messages::-webkit-scrollbar { width: 4px; }
+.chat-messages::-webkit-scrollbar-track { background: transparent; }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 4px; }
+
+/* MESSAGE BUBBLES */
+.msg-row {
+  display: flex;
+  gap: 8px;
+  max-width: 92%;
+  animation: msgSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes msgSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.msg-row.bot { align-self: flex-start; }
+.msg-row.user { align-self: flex-end; flex-direction: row-reverse; }
+
+.msg-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.msg-row.user .msg-avatar {
+  background: var(--teal);
+  color: var(--white);
+}
+
+.msg-bubble {
+  padding: 10px 14px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  border-radius: 16px;
+}
+
+.msg-row.bot .msg-bubble {
+  background: var(--white);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-200);
+  border-bottom-left-radius: 4px;
+}
+
+.msg-row.user .msg-bubble {
+  background: var(--navy);
+  color: var(--white);
+  border-bottom-right-radius: 4px;
+}
+
+/* TYPING INDICATOR */
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+  align-items: center;
+}
+
+.typing-indicator span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gray-400);
+  animation: typingBounce 1.2s infinite;
+}
+
+.typing-indicator span:nth-child(2) { animation-delay: 0.15s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* QUICK REPLY BUTTONS */
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 2px 0 8px;
+  align-self: flex-start;
+  max-width: 92%;
+  margin-left: 38px;
+  animation: msgSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.quick-reply-btn {
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--white);
+  color: var(--navy);
+  border: 1px solid var(--gray-200);
+  transition: all 0.2s;
+  line-height: 1.3;
+}
+
+.quick-reply-btn:hover {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
+.quick-reply-btn.cta-btn {
+  background: var(--teal);
+  color: var(--white);
+  border-color: var(--teal);
+}
+
+.quick-reply-btn.cta-btn:hover {
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
+}
+
+/* PRODUCT CARDS IN CHAT */
+.chat-product-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin: 4px 0;
+  margin-left: 38px;
+  max-width: 280px;
+  animation: msgSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transition: box-shadow 0.2s;
+}
+
+.chat-product-card:hover { box-shadow: var(--shadow-sm); }
+
+.chat-product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.chat-product-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.chat-product-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal);
+  white-space: nowrap;
+}
+
+.chat-product-desc {
+  font-size: 12px;
+  color: var(--gray-500);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.chat-product-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--teal);
+  transition: gap 0.2s;
+}
+
+.chat-product-cta:hover { gap: 8px; }
+
+/* DISCLAIMER */
+.chat-disclaimer {
+  font-size: 10.5px;
+  color: var(--gray-400);
+  padding: 4px 0;
+  margin-left: 38px;
+  line-height: 1.4;
+  max-width: 280px;
+  animation: msgSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  font-style: italic;
+}
+
+/* CHAT INPUT */
+.chat-input-area {
+  padding: 12px 16px;
+  border-top: 1px solid var(--gray-200);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--gray-200);
+  border-radius: 100px;
+  font-size: 13.5px;
+  font-family: var(--font);
+  color: var(--gray-800);
+  outline: none;
+  transition: border-color 0.2s;
+  background: var(--gray-50);
+}
+
+.chat-input:focus { border-color: var(--teal); }
+.chat-input::placeholder { color: var(--gray-400); }
+
+.chat-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chat-send {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.chat-send:hover { background: var(--teal-dark); transform: scale(1.05); }
+.chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+.chat-send svg { width: 18px; height: 18px; }
+
+/* CHAT FOOTER */
+.chat-footer {
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 10.5px;
+  color: var(--gray-400);
+  background: var(--white);
+  flex-shrink: 0;
+  border-top: 1px solid var(--gray-100);
+}
+
+.chat-footer a {
+  color: var(--gray-400);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .header-nav { display: none; }
+
+  .hero { padding: 60px 20px 80px; }
+
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; justify-content: center; }
+
+  .products-section { padding: 50px 16px; }
+  .product-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .product-card { padding: 16px; }
+
+  .features-inner { grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .chat-window {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    transform: translateY(100%);
+    opacity: 1;
+  }
+
+  .chat-window.open {
+    transform: translateY(0);
+  }
+
+  .chat-toggle {
+    bottom: 16px;
+    right: 16px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .quick-replies { max-width: 88%; }
+  .chat-product-card { max-width: 85%; }
+  .chat-disclaimer { max-width: 85%; }
+}
+
+@media (max-width: 400px) {
+  .product-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LANDING PAGE ===== -->
+<header class="landing-header">
+  <div class="logo-area">
+    <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="19" stroke="#C4A265" stroke-width="1.5" fill="none"/>
+      <path d="M20 8 L12 30 L16.5 30 L18 25.5 L22 25.5 L23.5 30 L28 30 Z M19 22 L20 17.5 L21 22 Z" fill="#C4A265"/>
+      <path d="M14 32 C14 32 17 34 20 34 C23 34 26 32 26 32" stroke="#C4A265" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/>
+    </svg>
+    <div class="logo-text">
+      Artemis Modern Aesthetics
+      <span>Medford, New Jersey</span>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <a href="#">Services</a>
+    <a href="#">Skincare</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<div class="demo-notice">
+  <strong>Demo Mode</strong> — This page demonstrates how the Artemis AI chatbot widget would appear on your website. Click the chat button to try it.
+</div>
+
+<section class="hero">
+  <div class="hero-badge">
+    <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l2.1 4.2L15 6l-3.5 3.4.8 4.8L8 12l-4.3 2.2.8-4.8L1 6l4.9-.8L8 1z" fill="currentColor"/></svg>
+    Physician-Only Practice
+  </div>
+  <h1>Science-Backed Skincare for <em>Real Results</em></h1>
+  <p>Dr. McCann's boutique aesthetic practice combines clinical expertise with premium PCA Skin products and physician-grade supplements.</p>
+  <div class="hero-ctas">
+    <a href="https://partners.pcaskin.com/artemis-medspa" target="_blank" rel="noopener noreferrer" class="btn-primary">
+      Shop PCA Skincare
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#" class="btn-outline">Request a Consultation</a>
+  </div>
+</section>
+
+<section class="products-section">
+  <div class="section-label">Featured Products</div>
+  <h2 class="section-title">Physician-Selected Skincare</h2>
+  <p class="section-desc">Each product in our collection is personally selected by Dr. McCann for clinical efficacy and quality.</p>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-card-icon">HA</div>
+      <h3>Hyaluronic Acid Boosting Serum</h3>
+      <div class="price">$128.00</div>
+      <p>Deep hydration for plump, healthy-looking skin. The essential serum for every routine.</p>
+      <a href="https://partners.pcaskin.com/artemis-medspa" target="_blank" rel="noopener noreferrer" class="product-card-cta">
+        View Product <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="product-card">
+      <div class="product-card-icon">CE</div>
+      <h3>C&E Advanced</h3>
+      <div class="price">$135.00</div>
+      <p>Advanced antioxidant treatment to diminish dark spots and soothe irritated skin.</p>
+      <a href="https://partners.pcaskin.com/artemis-medspa" target="_blank" rel="noopener noreferrer" class="product-card-cta">
+        View Product <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="product-card">
+      <div class="product-card-icon">SPF</div>
+      <h3>Sheer Tint SPF 45</h3>
+      <div class="price">$56.00</div>
+      <p>Universally tinted, water-resistant sunscreen with antioxidant protection.</p>
+      <a href="https://partners.pcaskin.com/artemis-medspa" target="_blank" rel="noopener noreferrer" class="product-card-cta">
+        View Product <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="product-card">
+      <div class="product-card-icon">PM</div>
+      <h3>Pro-Max Age Renewal</h3>
+      <div class="price">$221.00</div>
+      <p>Advanced anti-aging serum clinically shown to help lift and firm skin.</p>
+      <a href="https://partners.pcaskin.com/artemis-medspa" target="_blank" rel="noopener noreferrer" class="product-card-cta">
+        View Product <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="features-strip">
+  <div class="features-inner">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#C4A265"/></svg>
+      </div>
+      <h4>Physician-Directed</h4>
+      <p>Every product and treatment personally selected by Dr. McCann</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill="#C4A265"/></svg>
+      </div>
+      <h4>Clinical-Grade Products</h4>
+      <p>PCA Skin and Pure Encapsulations — professional formulations only</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" fill="#C4A265"/></svg>
+      </div>
+      <h4>Science-Backed</h4>
+      <p>Evidence-based skincare and wellness recommendations</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#C4A265"/></svg>
+      </div>
+      <h4>Personalized Care</h4>
+      <p>Tailored recommendations for your unique skin concerns</p>
+    </div>
+  </div>
+</section>
+
+<footer class="landing-footer">
+  <p>&copy; 2026 Artemis Modern Aesthetics — Medford, NJ. This is a chatbot demo page.</p>
+  <p><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></p>
+</footer>
+
+
+<!-- ===== CHAT TOGGLE BUTTON ===== -->
+<button class="chat-toggle" id="chatToggle" aria-label="Open chat">
+  <span class="chat-badge">1</span>
+  <svg viewBox="0 0 28 28" fill="none">
+    <path d="M4 20.5V6.5C4 5.4 4.9 4.5 6 4.5H22C23.1 4.5 24 5.4 24 6.5V17.5C24 18.6 23.1 19.5 22 19.5H8L4 23.5V20.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9.5" cy="12" r="1.2" fill="currentColor"/>
+    <circle cx="14" cy="12" r="1.2" fill="currentColor"/>
+    <circle cx="18.5" cy="12" r="1.2" fill="currentColor"/>
+  </svg>
+</button>
+
+
+<!-- ===== CHAT WINDOW ===== -->
+<div class="chat-window" id="chatWindow">
+  <!-- HEADER -->
+  <div class="chat-header">
+    <div class="chat-header-avatar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L8 10H3L7.5 14.5L5.5 22L12 17.5L18.5 22L16.5 14.5L21 10H16L12 2Z" fill="#C4A265"/>
+      </svg>
+    </div>
+    <div class="chat-header-info">
+      <h3>Artemis Skincare &amp; Wellness Guide</h3>
+      <p>Online now</p>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close chat">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <!-- MESSAGES -->
+  <div class="chat-messages" id="chatMessages"></div>
+
+  <!-- INPUT -->
+  <div class="chat-input-area">
+    <input type="text" class="chat-input" id="chatInput" placeholder="Type a message..." autocomplete="off" disabled>
+    <button class="chat-send" id="chatSend" disabled aria-label="Send message">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M3 10l14-7-7 14v-7H3z" fill="currentColor"/></svg>
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="chat-footer">
+    Powered by <strong>Artemis AI</strong> · <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Built with Perplexity</a>
+  </div>
+</div>
+
+
+<script>
+// ===================================================================
+// ARTEMIS CHATBOT — SIMULATED CONVERSATION ENGINE
+// All conversation flows are pre-built decision trees (no API calls)
+// ===================================================================
+
+const SHOP_URL = 'https://partners.pcaskin.com/artemis-medspa';
+const DISPENSARY_URL = 'https://patientdirect.pureencapsulationspro.com/patients/sign_up?practice_code=975630';
+
+// ===== PRODUCT DATABASE =====
+const PRODUCTS = {
+  // ACNE
+  'facial_wash_oily': { name: 'Facial Wash Oily/Problem', price: '$42.00', desc: 'Purifies pores and removes excess oil — formulated for breakout-prone skin.' },
+  'bpo_cleanser': { name: 'BPO 5% Cleanser', price: '$48.00', desc: 'Powerful 5% benzoyl peroxide daily cleanser that may help control acne breakouts.' },
+  'blemish_bar': { name: 'Blemish Control Bar', price: '$62.00', desc: 'Purifying cleansing bar for oily skin to help clear pores of excess oil and debris.' },
+  'acne_gel': { name: 'Acne Gel', price: '$72.00', desc: 'Advanced formula with OmniSome delivery system that may help support clearer skin.' },
+  'clearskin': { name: 'Clearskin', price: '$63.00', desc: 'Lightweight moisturizer that may help balance oily and breakout-prone complexions.' },
+  'intensive_clarity': { name: 'Intensive Clarity Treatment: 0.5% pure retinol', price: '$120.00', desc: 'Nighttime retinol treatment commonly used for those prone to breakouts.' },
+
+  // DISCOLORATION
+  'pigment_bar': { name: 'Pigment Bar®', price: '$62.00', desc: 'Advanced cleansing bar formulated to promote an even skin tone.' },
+  'vb3_serum': { name: 'Vitamin b3 Brightening Serum', price: '$130.00', desc: 'Visibly brightens dark spots and helps even skin tone with niacinamide.' },
+  'pigment_gel_pro': { name: 'Pigment Gel Pro', price: '$130.00', desc: 'Advanced spot treatment that may help with the appearance of stubborn discoloration.' },
+  'pigment_gel_hq_free': { name: 'Pigment Gel® HQ Free', price: '$96.00', desc: 'Hydroquinone-free spot treatment serum to promote an even skin tone.' },
+  'ce_advanced': { name: 'C&E Advanced', price: '$135.00', desc: 'Antioxidant treatment that may help diminish the appearance of dark spots.' },
+  'intensive_brightening': { name: 'Intensive Brightening Treatment: 0.5% pure retinol', price: '$120.00', desc: 'Retinol nighttime treatment for those concerned with uneven skin tone.' },
+
+  // REDNESS & SENSITIVITY
+  'creamy_cleanser': { name: 'Creamy Cleanser', price: '$42.00', desc: 'Gentle, hydrating cleanser that removes dirt and makeup without stripping the skin.' },
+  'anti_redness': { name: 'Anti-Redness Serum', price: '$72.00', desc: 'Calms, soothes and may help improve the appearance of sensitive, redness-prone skin.' },
+  'dual_action': { name: 'Dual Action Redness Relief', price: '$128.00', desc: 'May help improve barrier function while supporting reduced sensitivity and redness.' },
+  'clinicalm': { name: 'CliniCalm™ 1%', price: '$65.00', desc: 'Soothing therapeutic treatment with 1% hydrocortisone for temporary relief of irritation.' },
+  'retinol_sensitive': { name: 'Retinol Treatment for Sensitive Skin', price: '$120.00', desc: 'Gentle retinol specifically formulated for sensitive skin.' },
+  'rebalance': { name: 'ReBalance', price: '$63.00', desc: 'Lightweight moisturizer powered by antioxidants to help restore pH balance.' },
+
+  // AGING
+  'exlinea_pro': { name: 'ExLinea® Pro Peptide Serum', price: '$154.00', desc: 'Advanced neuropeptide serum that may help minimize the appearance of fine lines and wrinkles.' },
+  'exlinea_peptide': { name: 'ExLinea® Peptide Smoothing Serum', price: '$125.00', desc: 'Targeted peptide spot treatment for expression lines.' },
+  'pro_max': { name: 'Pro-Max Age Renewal', price: '$221.00', desc: 'Advanced anti-aging serum clinically shown to help lift and firm skin.' },
+  'total_strength': { name: 'Total Strength Serum', price: '$113.00', desc: 'Peptide and growth factor formulation for the appearance of fine lines and wrinkles.' },
+  'collagen_hydrator': { name: 'Collagen Hydrator', price: '$63.00', desc: 'Rich moisturizer that may help firm, soothe and revitalize skin.' },
+  'intensive_age': { name: 'Intensive Age Refining Treatment: 0.5% pure retinol', price: '$120.00', desc: 'The pure retinol nighttime treatment for those concerned with signs of aging.' },
+  'hydraluxe': { name: 'HydraLuxe', price: '$161.00', desc: 'Rich, luxurious moisturizer for deep hydration with anti-aging benefits.' },
+  'rejuvenating': { name: 'Rejuvenating Serum', price: '$109.00', desc: 'Age-prevention serum with grape fruit stem cell extract and epidermal growth factor.' },
+
+  // DRYNESS
+  'ha_serum': { name: 'Hyaluronic Acid Boosting Serum', price: '$128.00', desc: 'The essential hydration serum for plump, healthy-looking skin.' },
+  'hydrating_serum': { name: 'Hydrating Serum', price: '$109.00', desc: 'Lightweight serum with antioxidants and moisture-binding ingredients.' },
+  'hydrating_toner': { name: 'Hydrating Toner', price: '$48.00', desc: 'Weightless daily-use toner for deep hydration and antioxidant protection.' },
+  'ha_mask': { name: 'Hyaluronic Acid Overnight Mask', price: '$84.00', desc: 'Nourishing overnight mask for more luminous, deeply hydrated skin.' },
+  'hydrating_mask': { name: 'Hydrating Mask', price: '$72.00', desc: 'At-home mask with soothing ingredients and botanicals to reduce dryness.' },
+  'silkcoat': { name: 'Silkcoat® Balm', price: '$63.00', desc: 'The ultimate moisturizer for dry and mature skin — rich, nourishing formula.' },
+
+  // TEXTURE & PORES
+  'nutrient_toner': { name: 'Nutrient Toner', price: '$46.00', desc: 'Pumpkin wine-based toner to refine pore appearance and gently exfoliate.' },
+  'daily_exfoliant': { name: 'Daily Exfoliant', price: '$48.00', desc: 'Gently polishes away dead skin cells to reveal radiant, smoother skin.' },
+  'pore_refining': { name: 'Pore Refining Treatment', price: '$72.00', desc: 'Powerful triple-method exfoliant for dramatically smoother and softer skin.' },
+  'resurfacing': { name: 'Resurfacing Serum', price: '$113.00', desc: 'Multi-tasking serum to gently exfoliate dull skin for a radiant complexion.' },
+  'smoothing_toner': { name: 'Smoothing Toner', price: '$48.00', desc: 'Formulated with aloe and fruit acids to refine and smooth skin texture.' },
+  'detox_mask': { name: 'Detoxifying Mask', price: '$72.00', desc: 'Charcoal mask that minimizes pore appearance while absorbing excess oil and impurities.' },
+
+  // SPF
+  'sheer_tint_spf': { name: 'Sheer Tint Broad Spectrum SPF 45', price: '$56.00', desc: 'Universally tinted, water-resistant sunscreen with antioxidant protection.' },
+  'weightless_spf': { name: 'Weightless Protection Broad Spectrum SPF 45', price: '$52.00', desc: 'Lightweight, fast-absorbing SPF with caffeine antioxidant protection.' },
+  'hydrator_spf': { name: 'Hydrator Plus Broad Spectrum SPF 30', price: '$52.00', desc: 'Our most hydrating sunscreen — protects and moisturizes in one step.' },
+  'hydramatte': { name: 'HydraMatte', price: '$102.00', desc: 'Immediate and long-term hydration that reduces surface oil and minimizes pore appearance.' },
+
+  // CLEANSERS
+  'facial_wash': { name: 'Facial Wash', price: '$42.00', desc: 'Effectively removes makeup, oil, and impurities without stripping the skin.' },
+
+  // NECK & DÉCOLLETÉ
+  'perfecting_neck': { name: 'Perfecting Neck & D\u00e9collet\u00e9', price: '$97.00', desc: 'Corrective cream with peptides and retinol specifically formulated for the delicate neck and chest area.' },
+};
+
+// ===== RECOMMENDATION SETS BY CONCERN + SKIN TYPE =====
+const RECOMMENDATIONS = {
+  'acne': {
+    'oily': {
+      products: ['facial_wash_oily', 'acne_gel', 'clearskin'],
+      message: 'Based on your concerns with acne and oily skin, here\'s what I\'d recommend to get started:',
+      summary: 'This 3-step routine may help support clearer skin.'
+    },
+    'dry': {
+      products: ['creamy_cleanser', 'acne_gel', 'clearskin'],
+      message: 'For acne concerns with dry skin, a gentle approach may work well:',
+      summary: 'This routine balances breakout support with gentle hydration.'
+    },
+    'combination': {
+      products: ['facial_wash_oily', 'acne_gel', 'rebalance'],
+      message: 'For combination skin with acne concerns, here\'s a balanced approach:',
+      summary: 'This routine addresses breakouts while maintaining moisture balance.'
+    },
+    'sensitive': {
+      products: ['creamy_cleanser', 'acne_gel', 'rebalance'],
+      message: 'For sensitive skin with acne concerns, gentle formulas are key:',
+      summary: 'This routine supports breakout-prone sensitive skin without irritation.'
+    },
+    'notsure': {
+      products: ['facial_wash_oily', 'acne_gel', 'clearskin'],
+      message: 'Here\'s a well-rounded starting routine for acne concerns:',
+      summary: 'This versatile routine may help support clearer skin for most skin types.'
+    }
+  },
+  'discoloration': {
+    'oily': {
+      products: ['pigment_bar', 'vb3_serum', 'sheer_tint_spf'],
+      message: 'For dark spots with oily skin, here\'s what may help:',
+      summary: 'SPF is essential when addressing discoloration — it helps prevent new dark spots.'
+    },
+    'dry': {
+      products: ['creamy_cleanser', 'vb3_serum', 'hydrator_spf'],
+      message: 'For discoloration with dry skin, hydration and brightening together:',
+      summary: 'This routine may help brighten while keeping skin comfortable and hydrated.'
+    },
+    'combination': {
+      products: ['pigment_bar', 'vb3_serum', 'sheer_tint_spf'],
+      message: 'For combination skin with discoloration concerns:',
+      summary: 'Consistent use of SPF is key when targeting dark spots and uneven tone.'
+    },
+    'sensitive': {
+      products: ['creamy_cleanser', 'pigment_gel_hq_free', 'sheer_tint_spf'],
+      message: 'For sensitive skin with discoloration, we recommend gentler formulas:',
+      summary: 'The HQ-free formula is designed for sensitive skin while addressing tone.'
+    },
+    'notsure': {
+      products: ['pigment_bar', 'vb3_serum', 'sheer_tint_spf'],
+      message: 'Here\'s a great starting point for discoloration concerns:',
+      summary: 'Brightening ingredients combined with daily SPF may help support more even tone.'
+    }
+  },
+  'redness': {
+    'oily': {
+      products: ['creamy_cleanser', 'anti_redness', 'rebalance'],
+      message: 'For redness with oily skin, calming and balancing products:',
+      summary: 'This routine may help soothe redness while keeping excess oil in check.'
+    },
+    'dry': {
+      products: ['creamy_cleanser', 'dual_action', 'silkcoat'],
+      message: 'For redness with dry skin, barrier repair is key:',
+      summary: 'Strengthening the skin barrier may help reduce redness and sensitivity over time.'
+    },
+    'combination': {
+      products: ['creamy_cleanser', 'anti_redness', 'rebalance'],
+      message: 'For combination skin with redness, a gentle approach:',
+      summary: 'This routine may help calm irritation while maintaining balance.'
+    },
+    'sensitive': {
+      products: ['creamy_cleanser', 'clinicalm', 'dual_action'],
+      message: 'For sensitive, redness-prone skin, the gentlest options:',
+      summary: 'These products are specifically designed for reactive, sensitive skin.'
+    },
+    'notsure': {
+      products: ['creamy_cleanser', 'anti_redness', 'rebalance'],
+      message: 'Here\'s a soothing routine for redness concerns:',
+      summary: 'Gentle, calming ingredients may help support a more comfortable complexion.'
+    }
+  },
+  'aging': {
+    'oily': {
+      products: ['facial_wash_oily', 'total_strength', 'collagen_hydrator'],
+      message: 'For aging concerns with oily skin:',
+      summary: 'Peptide-based treatments may help support firmer skin without heavy formulas.'
+    },
+    'dry': {
+      products: ['creamy_cleanser', 'exlinea_pro', 'hydraluxe'],
+      message: 'For aging concerns with dry skin, rich hydration meets anti-aging:',
+      summary: 'Deep hydration may help plump fine lines and support a youthful appearance.'
+    },
+    'combination': {
+      products: ['creamy_cleanser', 'total_strength', 'collagen_hydrator'],
+      message: 'For combination skin with aging concerns:',
+      summary: 'This balanced routine targets fine lines without over-moisturizing.'
+    },
+    'sensitive': {
+      products: ['creamy_cleanser', 'rejuvenating', 'collagen_hydrator'],
+      message: 'For sensitive skin with aging concerns, gentle yet effective:',
+      summary: 'These formulas support skin renewal while being kind to sensitive skin.'
+    },
+    'notsure': {
+      products: ['creamy_cleanser', 'exlinea_pro', 'collagen_hydrator'],
+      message: 'Here\'s a strong starting routine for aging concerns:',
+      summary: 'Peptides and hydration may help support a more youthful complexion.'
+    }
+  },
+  'dryness': {
+    'oily': {
+      products: ['hydrating_toner', 'hydrating_serum', 'hydramatte'],
+      message: 'Even oily skin can be dehydrated — here\'s what may help:',
+      summary: 'Lightweight hydration may help balance oil production over time.'
+    },
+    'dry': {
+      products: ['creamy_cleanser', 'ha_serum', 'hydraluxe'],
+      message: 'For deeply dry skin, maximum hydration:',
+      summary: 'Layering hydrating products may help restore moisture and comfort.'
+    },
+    'combination': {
+      products: ['hydrating_toner', 'ha_serum', 'rebalance'],
+      message: 'For combination skin with dryness concerns:',
+      summary: 'Targeted hydration where you need it, lightweight where you don\'t.'
+    },
+    'sensitive': {
+      products: ['creamy_cleanser', 'ha_serum', 'silkcoat'],
+      message: 'For sensitive, dry skin — gentle and deeply nourishing:',
+      summary: 'These gentle formulas may help restore and protect dry, reactive skin.'
+    },
+    'notsure': {
+      products: ['hydrating_toner', 'ha_serum', 'collagen_hydrator'],
+      message: 'Here\'s a great hydration-focused routine:',
+      summary: 'Hyaluronic acid is one of the most effective hydrators for all skin types.'
+    }
+  },
+  'texture': {
+    'oily': {
+      products: ['nutrient_toner', 'pore_refining', 'hydramatte'],
+      message: 'For texture and pore concerns with oily skin:',
+      summary: 'Exfoliation and pore refinement may help smooth skin texture over time.'
+    },
+    'dry': {
+      products: ['daily_exfoliant', 'resurfacing', 'collagen_hydrator'],
+      message: 'For texture concerns with dry skin, gentle resurfacing:',
+      summary: 'Regular gentle exfoliation may help reveal smoother skin without dryness.'
+    },
+    'combination': {
+      products: ['smoothing_toner', 'pore_refining', 'rebalance'],
+      message: 'For combination skin with texture concerns:',
+      summary: 'Targeted exfoliation may help refine texture while maintaining balance.'
+    },
+    'sensitive': {
+      products: ['daily_exfoliant', 'resurfacing', 'rebalance'],
+      message: 'For sensitive skin with texture concerns, we go gentle:',
+      summary: 'These mild exfoliants may help smooth skin without triggering sensitivity.'
+    },
+    'notsure': {
+      products: ['smoothing_toner', 'pore_refining', 'rebalance'],
+      message: 'Here\'s a great starting point for texture and pore refinement:',
+      summary: 'Consistent exfoliation is key for smoother, more refined skin.'
+    }
+  }
+};
+
+// Concern label mapping
+const CONCERN_LABELS = {
+  'acne': 'acne',
+  'discoloration': 'discoloration',
+  'redness': 'redness and sensitivity',
+  'aging': 'aging and fine lines',
+  'dryness': 'dryness and dehydration',
+  'texture': 'texture and pores'
+};
+
+// Skin type labels
+const SKINTYPE_LABELS = {
+  'oily': 'oily',
+  'dry': 'dry',
+  'combination': 'combination',
+  'sensitive': 'sensitive',
+  'notsure': 'your'
+};
+
+// Collection labels for "See Full Collection" buttons
+const COLLECTION_LABELS = {
+  'acne': 'Acne Collection',
+  'discoloration': 'Brightening Collection',
+  'redness': 'Redness Relief Collection',
+  'aging': 'Anti-Aging Collection',
+  'dryness': 'Hydration Collection',
+  'texture': 'Pore Refining Collection'
+};
+
+// Supplement data
+const SUPPLEMENTS = {
+  'sleep': {
+    goal: 'healthy sleep patterns',
+    products: [
+      { name: 'Magnesium Glycinate', desc: 'A highly absorbable form of magnesium that may help support muscle relaxation and restful sleep quality.' },
+      { name: 'Best-Rest Formula', desc: 'A comprehensive blend of botanicals and nutrients commonly used to support healthy sleep onset and duration.' }
+    ],
+    outro: 'These supplements may help support restful sleep when combined with good sleep habits.'
+  },
+  'stress': {
+    goal: 'stress resilience',
+    products: [
+      { name: 'Ashwagandha', desc: 'An adaptogenic herb traditionally used to help the body manage occasional stress and support calm focus.' },
+      { name: 'L-Theanine', desc: 'An amino acid naturally found in green tea that may help promote relaxation without drowsiness.' }
+    ],
+    outro: 'These adaptogens and calming nutrients may help support your body\'s natural stress response.'
+  },
+  'energy': {
+    goal: 'energy and focus',
+    products: [
+      { name: 'B-Complex Plus', desc: 'Comprehensive B-vitamin formula that may help support energy metabolism and cognitive function.' },
+      { name: 'CoQ10', desc: 'A vital coenzyme that may help support cellular energy production and antioxidant protection.' }
+    ],
+    outro: 'B-vitamins and CoQ10 are foundational nutrients commonly used to support natural energy levels.'
+  },
+  'gut': {
+    goal: 'digestive wellness',
+    products: [
+      { name: 'Probiotic-5', desc: 'A multi-strain probiotic that may help support healthy gut flora and digestive comfort.' },
+      { name: 'GI Integrity', desc: 'A targeted formula with L-glutamine and herbs commonly used to support intestinal barrier function.' }
+    ],
+    outro: 'Gut health is foundational to overall wellness — these formulas may help support a healthy digestive system.'
+  },
+  'immune': {
+    goal: 'immune resilience',
+    products: [
+      { name: 'Vitamin D3 5,000 IU', desc: 'A highly bioavailable form of vitamin D commonly used to support immune function and bone health.' },
+      { name: 'Zinc 30', desc: 'An essential mineral that may help support immune system function and cellular repair.' }
+    ],
+    outro: 'Vitamin D and zinc are two of the most well-researched nutrients for immune support.'
+  },
+  'general': {
+    goal: 'overall wellness',
+    products: [
+      { name: 'ONE Multivitamin', desc: 'A comprehensive once-daily multivitamin and mineral formula designed to support overall health.' },
+      { name: 'O.N.E. Omega', desc: 'A high-quality omega-3 fish oil that may help support cardiovascular, brain, and joint health.' }
+    ],
+    outro: 'A quality multivitamin and omega-3 provide a strong nutritional foundation for daily wellness.'
+  }
+};
+
+// ===== PCA SKIN BUNDLES =====
+const PCA_BUNDLES = {
+  'dry_mature': {
+    name: 'Dry / Mature Skin Bundle',
+    goal: 'Barrier repair, hydration, and anti-aging support',
+    products: ['creamy_cleanser', 'hydrating_serum', 'ce_advanced', 'collagen_hydrator', 'hydrator_spf'],
+    optional: [{ key: 'ha_mask', reason: 'Add the Hyaluronic Acid Overnight Mask for a complete hydration protocol' }],
+    upgrade: { from: 'collagen_hydrator', to: 'hydraluxe', when: 'For very dry or mature skin, upgrade to HydraLuxe ($161) for deeper nourishment' },
+    message: 'Here\'s a physician-curated routine for dry and mature skin \u2014 focused on barrier repair, deep hydration, and anti-aging support:',
+    summary: 'This 5-step protocol pairs hyaluronic acid hydration with antioxidant defense. All products are backed by clinical research.'
+  },
+  'acne': {
+    name: 'Oily / Acne-Prone Skin Bundle',
+    goal: 'Decrease breakouts and oil while preserving barrier',
+    products: ['bpo_cleanser', 'acne_gel', 'clearskin', 'intensive_clarity', 'sheer_tint_spf'],
+    message: 'Here\'s a physician-curated routine for oily, acne-prone skin \u2014 targeting breakouts while protecting your skin barrier:',
+    summary: 'BPO in the morning, retinol at night \u2014 this is the evidence-based approach to acne management. The tinted SPF increases daily compliance.'
+  },
+  'pigment': {
+    name: 'Pigment / Melasma Bundle',
+    goal: 'Even tone and treat dyschromia \u2014 pairs with in-office peel/IPL protocols',
+    products: ['facial_wash', 'nutrient_toner', 'vb3_serum', 'pigment_gel_pro', 'ce_advanced', 'intensive_brightening', 'sheer_tint_spf'],
+    note: 'Alternative: Pigment Gel HQ Free ($96) available for patients who prefer a hydroquinone-free option.',
+    message: 'Here\'s a comprehensive pigment-correction protocol \u2014 this pairs beautifully with in-office peel or IPL treatments:',
+    summary: 'Niacinamide (B3) and vitamin C work during the day while retinol works overnight. Daily SPF is critical \u2014 rain or shine.\n\nFor enhanced results, consider requesting a consultation to discuss in-office peel or IPL treatments.',
+    crossSell: true
+  },
+  'photoaging': {
+    name: 'Photoaging / Prejuvenation Bundle',
+    goal: 'Prevent and treat fine lines, texture, and early laxity',
+    products: ['facial_wash', 'nutrient_toner', 'ce_advanced', 'exlinea_pro', 'pro_max', 'collagen_hydrator', 'hydrator_spf'],
+    upgrade: { from: 'collagen_hydrator', to: 'hydraluxe', when: 'For drier skin, upgrade to HydraLuxe ($161)' },
+    message: 'Here\'s our premium anti-aging protocol \u2014 the most comprehensive routine for fine lines, texture, and firmness:',
+    summary: 'Start with C&E Advanced + ExLinea Pro + SPF as your core, then layer in Pro-Max Age Renewal and night cream for the full protocol.\n\nThe ExLinea Pro Peptide Serum also pairs beautifully with neurotoxin treatments.',
+    crossSell: true
+  },
+  'rosacea': {
+    name: 'Rosacea / Reactive Skin Bundle',
+    goal: 'Calm, protect barrier, minimize flushing triggers',
+    products: ['facial_wash', 'hydrating_serum', 'collagen_hydrator', 'vb3_serum', 'hydrator_spf'],
+    note: 'Note: Introduce the B3 Brightening Serum gradually and titrate up \u2014 niacinamide benefits barrier and redness but some reactive skin needs time to adjust.',
+    message: 'Here\'s a calming protocol for rosacea and reactive skin \u2014 gentle products that protect your barrier without triggering flares:',
+    summary: 'This routine avoids BPO and salicylic acid systems. If you have active rosacea, we recommend reaching out to Dr. McCann for a personalized assessment.\n\nThis also works beautifully as a post-procedure protocol after IPL or laser redness treatments.',
+    crossSell: true
+  },
+  'neck': {
+    name: 'Neck & D\u00e9collet\u00e9 Bundle',
+    goal: 'Target tech-neck lines and chest photodamage',
+    products: ['facial_wash', 'nutrient_toner', 'ce_advanced', 'perfecting_neck', 'hydrator_spf'],
+    message: 'Here\'s a targeted protocol for neck and chest concerns \u2014 tech-neck lines and sun damage respond well to this approach:',
+    summary: 'The Perfecting Neck & D\u00e9collet\u00e9 cream is specifically designed for this delicate area. Apply C&E Advanced to neck and chest each morning, followed by SPF.\n\nFor best results, pair with in-office treatments.',
+    crossSell: true
+  }
+};
+
+// ===== SUPPLEMENT BUNDLES =====
+const SUPPLEMENT_BUNDLES = {
+  'longevity': {
+    name: 'Longevity Bundle',
+    goal: 'Cellular health, NAD+ support, and healthy aging',
+    products: [
+      { name: 'RevitalAge Ultra (90 caps)', desc: 'NMN, acetyl-l-carnitine, ALA, CoQ10, resveratrol, and pterostilbene for mitochondrial function and NAD+ levels.' },
+      { name: 'Longevity Nutrients (120 caps)', desc: 'Complete multivitamin/mineral for healthy aging with cognitive and cardiovascular polyphenol blends.' },
+      { name: 'Vitamin D3 & K2 (120 caps)', desc: 'Supports bone and vascular health \u2014 one of the most well-researched nutrients for immune function.' },
+      { name: 'O.N.E. Omega (60 softgels)', desc: 'Triglyceride-form EPA and DHA for cardiovascular and brain health.' }
+    ],
+    message: 'Here\'s our Longevity Bundle \u2014 focused on cellular health and healthy aging:',
+    outro: 'This bundle combines mitochondrial support with foundational nutrition for long-term vitality.'
+  },
+  'weight': {
+    name: 'Weight Management Bundle',
+    goal: 'Supports healthy metabolism, glucose balance, and body composition',
+    products: [
+      { name: 'PureLean Pure Pack (daily packets)', desc: 'All-in-one packets with multivitamin, cortisol support, and metabolic formulas designed for healthy weight management.' },
+      { name: 'CLA 1,000 mg (180 softgels)', desc: 'Supports body composition and healthy weight control through lipid metabolism.' },
+      { name: 'Magnesium Glycinate (360 caps)', desc: 'Highly bioavailable magnesium to support metabolic function and stress response.' }
+    ],
+    message: 'Here\'s our Weight Management Bundle \u2014 supports healthy metabolism as part of a comprehensive program:',
+    outro: 'These supplements support metabolic health alongside a balanced diet and exercise. They are not a substitute for a healthy lifestyle.'
+  },
+  'wellness': {
+    name: 'Wellness Bundle',
+    goal: 'Foundational daily health protocol for overall vitality and immune resilience',
+    products: [
+      { name: 'O.N.E. Multivitamin (120 caps)', desc: 'Once-daily nutrient essentials with sustained-release CoQ10.' },
+      { name: 'O.N.E. Omega (60 softgels)', desc: 'EPA/DHA for cardiovascular and daily wellness.' },
+      { name: 'Vitamin D3 & K2 (120 caps)', desc: 'Bone and vascular support.' },
+      { name: 'Magnesium Glycinate (360 caps)', desc: 'Supports musculoskeletal and neurological health.' }
+    ],
+    message: 'Here\'s our Wellness Bundle \u2014 the foundational daily protocol for overall vitality:',
+    outro: 'This is our most popular bundle. Every product has robust clinical trial support and covers the nutritional bases most adults need.'
+  },
+  'muscle': {
+    name: 'Build Muscle Bundle',
+    goal: 'Strength training, recovery, and lean muscle development',
+    products: [
+      { name: 'Creatine (315g powder, 60 servings)', desc: '5g creatine monohydrate per serving \u2014 the most extensively studied ergogenic supplement in sports nutrition.' },
+      { name: 'Athletic Nutrients (180 caps)', desc: 'Multivitamin/mineral with MuscleRestore Complex (NAC, ALA, l-carnosine) for training support.' },
+      { name: 'BCAA (capsules)', desc: 'Branched chain amino acids in 2:1:1 ratio to promote lean muscle mass and recovery.' },
+      { name: 'Muscle Repair+ (60 caps)', desc: 'Accelerates muscle fiber recovery and enhances muscle stem cell activity after exercise.' }
+    ],
+    message: 'Here\'s our Build Muscle Bundle \u2014 designed for patients focused on strength training and recovery:',
+    outro: 'Creatine monohydrate is the most evidence-backed ergogenic supplement available. This bundle provides comprehensive training support.'
+  },
+  'bodycomp': {
+    name: 'Optimal Body Composition Bundle',
+    goal: 'Fat utilization, lean mass support, and metabolic efficiency',
+    products: [
+      { name: 'PureLean Nutrients (180 caps)', desc: 'Multivitamin with green tea and pterostilbene for healthy carbohydrate metabolism and lipid utilization.' },
+      { name: 'CLA 1,000 mg (180 softgels)', desc: 'Supports favorable body composition changes.' },
+      { name: 'Creatine (315g powder)', desc: 'Supports lean muscle mass when combined with resistance training.' },
+      { name: 'EPA/DHA Essentials (90 softgels)', desc: 'Supports cardiovascular health and healthy inflammatory response during training.' },
+      { name: 'Athletic Pure Pack (daily packets)', desc: 'Comprehensive packets with Athletic Nutrients, CoQ10, EPA/DHA, l-glutamine, and Kre-Alkalyn for energy and recovery.' }
+    ],
+    message: 'Here\'s our Optimal Body Composition Bundle \u2014 ideal for aesthetics patients focused on metabolic efficiency:',
+    outro: 'This bundle targets fat utilization and lean mass support alongside your training program.'
+  }
+};
+
+// FAQ Content
+const FAQ_CONTENT = {
+  'shipping': {
+    title: 'Shipping & Returns',
+    message: 'PCA Skin products ship directly from PCA — your order is fulfilled and shipped by them when you purchase through our partner store. Shipping details and timelines are provided at checkout.\n\nFor Pure Encapsulations supplements, shipping is handled through the dispensary portal. As a patient of Artemis Modern Aesthetics, you receive 15% off all supplement orders automatically.'
+  },
+  'ingredients': {
+    title: 'Product Ingredients',
+    message: 'All PCA Skin products are formulated without synthetic dyes, synthetic fragrances, mineral oil, petrolatum, phthalates, parabens, or sulfates. Full ingredient lists are available on each product page.\n\nOur Pure Encapsulations supplements are free from common allergens, artificial additives, and unnecessary fillers — meeting the highest standards for purity.'
+  },
+  'about': {
+    title: 'About Dr. McCann',
+    message: 'Dr. Thomas McCann is a board-certified radiologist who founded Artemis Modern Aesthetics in Medford, New Jersey. The practice specializes in evidence-based aesthetic medicine — every treatment is performed exclusively by Dr. McCann, never delegated.\n\nOfferings include personalized skincare consultations, injectable treatments, body contouring, and wellness planning.'
+  },
+  'hours': {
+    title: 'Office Hours & Location',
+    message: 'Artemis Modern Aesthetics\n417 Stokes Rd, Medford, NJ\n\nDr. McCann sees patients by consultation only. To request a consultation or ask a question, visit our contact page or text us directly.'
+  }
+};
+
+
+// ===== CHATBOT ENGINE =====
+class ArtemisChatbot {
+  constructor() {
+    this.messages = document.getElementById('chatMessages');
+    this.input = document.getElementById('chatInput');
+    this.sendBtn = document.getElementById('chatSend');
+    this.window = document.getElementById('chatWindow');
+    this.toggleBtn = document.getElementById('chatToggle');
+    this.closeBtn = document.getElementById('chatClose');
+    this.badge = this.toggleBtn.querySelector('.chat-badge');
+
+    this.state = 'idle'; // state machine
+    this.context = {};   // stores user selections
+    this.inputMode = null; // null | 'name' | 'email'
+    this.userName = '';
+    this.userEmail = '';
+
+    this.init();
+  }
+
+  init() {
+    this.toggleBtn.addEventListener('click', () => this.open());
+    this.closeBtn.addEventListener('click', () => this.close());
+    this.sendBtn.addEventListener('click', () => this.handleTextInput());
+    this.input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') this.handleTextInput();
+    });
+
+    // Auto-open after 3s for demo
+    setTimeout(() => {
+      if (!this.window.classList.contains('open')) {
+        this.toggleBtn.classList.add('attention');
+      }
+    }, 3000);
+  }
+
+  open() {
+    this.window.classList.add('open');
+    this.toggleBtn.classList.add('hidden');
+    this.badge.style.display = 'none';
+
+    if (this.state === 'idle') {
+      this.state = 'welcome';
+      setTimeout(() => this.showWelcome(), 400);
+    }
+  }
+
+  close() {
+    this.window.classList.remove('open');
+    this.toggleBtn.classList.remove('hidden');
+  }
+
+  // ===== MESSAGE RENDERING =====
+
+  addBotMessage(text) {
+    return new Promise((resolve) => {
+      // Show typing first
+      const typing = this.addTypingIndicator();
+      this.scrollToBottom();
+
+      const delay = 500 + Math.random() * 400;
+      setTimeout(() => {
+        typing.remove();
+        const row = document.createElement('div');
+        row.className = 'msg-row bot';
+        row.innerHTML = `
+          <div class="msg-avatar">A</div>
+          <div class="msg-bubble">${this.formatText(text)}</div>
+        `;
+        this.messages.appendChild(row);
+        this.scrollToBottom();
+        resolve();
+      }, delay);
+    });
+  }
+
+  addUserMessage(text) {
+    const row = document.createElement('div');
+    row.className = 'msg-row user';
+    row.innerHTML = `
+      <div class="msg-avatar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+      </div>
+      <div class="msg-bubble">${this.escapeHtml(text)}</div>
+    `;
+    this.messages.appendChild(row);
+    this.scrollToBottom();
+  }
+
+  addQuickReplies(buttons) {
+    return new Promise((resolve) => {
+      const container = document.createElement('div');
+      container.className = 'quick-replies';
+
+      buttons.forEach(btn => {
+        const button = document.createElement('button');
+        button.className = 'quick-reply-btn' + (btn.cta ? ' cta-btn' : '');
+        button.textContent = btn.label;
+        
+        if (btn.url) {
+          button.addEventListener('click', () => {
+            window.open(btn.url, '_blank', 'noopener,noreferrer');
+          });
+        } else {
+          button.addEventListener('click', () => {
+            this.disableQuickReplies(container);
+            this.addUserMessage(btn.label);
+            if (btn.action) btn.action();
+          });
+        }
+        
+        container.appendChild(button);
+      });
+
+      this.messages.appendChild(container);
+      this.scrollToBottom();
+      resolve();
+    });
+  }
+
+  addProductCard(productKey) {
+    const p = PRODUCTS[productKey];
+    if (!p) return;
+
+    const card = document.createElement('div');
+    card.className = 'chat-product-card';
+    card.innerHTML = `
+      <div class="chat-product-header">
+        <span class="chat-product-name">${p.name}</span>
+        <span class="chat-product-price">${p.price}</span>
+      </div>
+      <div class="chat-product-desc">${p.desc}</div>
+      <a href="${SHOP_URL}" target="_blank" rel="noopener noreferrer" class="chat-product-cta">
+        View Product →
+      </a>
+    `;
+    this.messages.appendChild(card);
+    this.scrollToBottom();
+  }
+
+  addSupplementCard(supp) {
+    const card = document.createElement('div');
+    card.className = 'chat-product-card';
+    card.innerHTML = `
+      <div class="chat-product-header">
+        <span class="chat-product-name">${supp.name}</span>
+        <span class="chat-product-price" style="color: var(--gold);">Rx-grade</span>
+      </div>
+      <div class="chat-product-desc">${supp.desc}</div>
+      <a href="${DISPENSARY_URL}" target="_blank" rel="noopener noreferrer" class="chat-product-cta">
+        View in Dispensary →
+      </a>
+    `;
+    this.messages.appendChild(card);
+    this.scrollToBottom();
+  }
+
+  addDisclaimer(text) {
+    const el = document.createElement('div');
+    el.className = 'chat-disclaimer';
+    el.textContent = text;
+    this.messages.appendChild(el);
+    this.scrollToBottom();
+  }
+
+  addTypingIndicator() {
+    const row = document.createElement('div');
+    row.className = 'msg-row bot';
+    row.innerHTML = `
+      <div class="msg-avatar">A</div>
+      <div class="msg-bubble">
+        <div class="typing-indicator">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    `;
+    this.messages.appendChild(row);
+    return row;
+  }
+
+  disableQuickReplies(container) {
+    container.querySelectorAll('button').forEach(btn => {
+      btn.disabled = true;
+      btn.style.opacity = '0.45';
+      btn.style.pointerEvents = 'none';
+    });
+  }
+
+  scrollToBottom() {
+    requestAnimationFrame(() => {
+      this.messages.scrollTop = this.messages.scrollHeight;
+    });
+  }
+
+  formatText(text) {
+    return text.replace(/\n/g, '<br>');
+  }
+
+  escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  enableInput(placeholder) {
+    this.input.disabled = false;
+    this.sendBtn.disabled = false;
+    this.input.placeholder = placeholder || 'Type a message...';
+    this.input.focus();
+  }
+
+  disableInput() {
+    this.input.disabled = true;
+    this.sendBtn.disabled = true;
+    this.input.placeholder = 'Select an option above...';
+    this.input.value = '';
+  }
+
+  // ===== CONVERSATION FLOWS =====
+
+  async showWelcome() {
+    await this.addBotMessage("Welcome to Artemis Modern Aesthetics. I'm your skincare and wellness guide — here to help you find the right products for your goals.\n\nWhat can I help you with today?");
+    this.addQuickReplies([
+      { label: 'Skincare Products', action: () => this.flowSkincareConcern() },
+      { label: 'Supplements & Wellness', action: () => this.flowSupplements() },
+      { label: 'Request a Consultation', action: () => this.flowConsultation() },
+      { label: 'I Have a Question', action: () => this.flowFAQ() }
+    ]);
+    this.disableInput();
+  }
+
+  // ----- SKINCARE FLOW -----
+  async flowSkincareConcern() {
+    this.state = 'skincare_concern';
+    await this.addBotMessage("I'd love to help you find the right skincare routine. What's your primary skin concern?");
+    this.addQuickReplies([
+      { label: 'Acne & Breakouts', action: () => this.flowSkinChoice('acne') },
+      { label: 'Dark Spots & Melasma', action: () => this.flowSkinChoice('discoloration') },
+      { label: 'Redness & Rosacea', action: () => this.flowSkinChoice('redness') },
+      { label: 'Aging & Fine Lines', action: () => this.flowSkinChoice('aging') },
+      { label: 'Dryness & Dehydration', action: () => this.flowSkinChoice('dryness') },
+      { label: 'Neck & D\u00e9collet\u00e9', action: () => this.flowBundleRec('neck') },
+      { label: 'Texture & Pores', action: () => this.flowSkinType('texture') }
+    ]);
+  }
+
+  async flowSkinChoice(concern) {
+    this.context.concern = concern;
+    const bundleMap = {
+      'acne': 'acne',
+      'discoloration': 'pigment',
+      'redness': 'rosacea',
+      'aging': 'photoaging',
+      'dryness': 'dry_mature'
+    };
+    const bundleKey = bundleMap[concern];
+    if (bundleKey) {
+      await this.addBotMessage("Would you like to see a curated bundle protocol or build a custom routine by skin type?");
+      this.addQuickReplies([
+        { label: '\u2728 See Curated Bundle', action: () => this.flowBundleRec(bundleKey) },
+        { label: 'Custom by Skin Type', action: () => this.flowSkinType(concern) }
+      ]);
+    } else {
+      this.flowSkinType(concern);
+    }
+  }
+
+  async flowBundleRec(bundleKey) {
+    const bundle = PCA_BUNDLES[bundleKey];
+    if (!bundle) return;
+
+    this.state = 'bundle_recs';
+    await this.addBotMessage(bundle.message);
+
+    // Show product cards
+    for (const productKey of bundle.products) {
+      await this.delay(200);
+      this.addProductCard(productKey);
+    }
+
+    if (bundle.note) {
+      await this.delay(200);
+      this.addDisclaimer(bundle.note);
+    }
+
+    await this.delay(400);
+
+    let summaryText = bundle.summary;
+    if (bundle.upgrade) {
+      summaryText += '\n\n' + bundle.upgrade.when;
+    }
+
+    await this.addBotMessage(summaryText + '\n\nWould you like to:');
+
+    const replies = [
+      { label: 'Shop This Bundle \u2192', url: SHOP_URL, cta: true }
+    ];
+
+    if (bundle.optional && bundle.optional.length > 0) {
+      replies.push({ label: 'Add Optional Upgrade', action: () => this.flowBundleOptional(bundleKey) });
+    }
+
+    if (bundle.crossSell) {
+      replies.push({ label: 'Request a Consultation', action: () => this.flowConsultation() });
+    }
+
+    replies.push({ label: 'See Supplements Too', action: () => this.flowSupplements() });
+    replies.push({ label: '\u2190 Back to Main Menu', action: () => this.flowRestart() });
+
+    this.addQuickReplies(replies);
+  }
+
+  async flowBundleOptional(bundleKey) {
+    const bundle = PCA_BUNDLES[bundleKey];
+    if (!bundle || !bundle.optional) return;
+
+    for (const opt of bundle.optional) {
+      await this.addBotMessage(opt.reason);
+      await this.delay(200);
+      this.addProductCard(opt.key);
+    }
+
+    await this.delay(300);
+    await this.addBotMessage('Would you like to:');
+    this.addQuickReplies([
+      { label: 'Shop All Products \u2192', url: SHOP_URL, cta: true },
+      { label: 'Request a Consultation', action: () => this.flowConsultation() },
+      { label: '\u2190 Back to Main Menu', action: () => this.flowRestart() }
+    ]);
+  }
+
+  async flowSkinType(concern) {
+    this.context.concern = concern;
+    this.state = 'skincare_type';
+    await this.addBotMessage("Great choice — let's narrow this down. How would you describe your skin type?");
+    this.addQuickReplies([
+      { label: 'Oily', action: () => this.flowRecommendations('oily') },
+      { label: 'Dry', action: () => this.flowRecommendations('dry') },
+      { label: 'Combination', action: () => this.flowRecommendations('combination') },
+      { label: 'Sensitive', action: () => this.flowRecommendations('sensitive') },
+      { label: 'Not Sure', action: () => this.flowRecommendations('notsure') }
+    ]);
+  }
+
+  async flowRecommendations(skinType) {
+    this.context.skinType = skinType;
+    this.state = 'skincare_recs';
+    const concern = this.context.concern;
+    const recs = RECOMMENDATIONS[concern][skinType];
+
+    await this.addBotMessage(recs.message);
+    
+    // Show product cards with staggered animation
+    for (let i = 0; i < recs.products.length; i++) {
+      await this.delay(200);
+      this.addProductCard(recs.products[i]);
+    }
+
+    await this.delay(400);
+    await this.addBotMessage(recs.summary + ' Would you like to:');
+    
+    const collectionLabel = COLLECTION_LABELS[concern];
+    this.addQuickReplies([
+      { label: 'Add SPF to Complete Routine', action: () => this.flowAddSPF() },
+      { label: `See Full ${collectionLabel}`, url: SHOP_URL, cta: true },
+      { label: 'Build a Custom Routine', action: () => this.flowLeadCapture() },
+      { label: 'Talk to Dr. McCann', action: () => this.flowConsultation() }
+    ]);
+  }
+
+  async flowAddSPF() {
+    this.state = 'skincare_spf';
+    await this.addBotMessage("Excellent — daily SPF is the most important step for protecting your results. Here are our top options:");
+    
+    await this.delay(200);
+    this.addProductCard('sheer_tint_spf');
+    await this.delay(200);
+    this.addProductCard('weightless_spf');
+    await this.delay(200);
+    this.addProductCard('hydrator_spf');
+
+    await this.delay(300);
+    await this.addBotMessage("The Sheer Tint is our most popular — it works on all skin tones and doubles as a light coverage base. Would you like to:");
+    this.addQuickReplies([
+      { label: 'Shop All Skincare →', url: SHOP_URL, cta: true },
+      { label: 'Get Personalized Advice', action: () => this.flowLeadCapture() },
+      { label: 'Talk to Dr. McCann', action: () => this.flowConsultation() },
+      { label: 'Start Over', action: () => this.flowRestart() }
+    ]);
+  }
+
+  // ----- SUPPLEMENT FLOW -----
+  async flowSupplements() {
+    this.state = 'supplements';
+    await this.addBotMessage("Our Pure Encapsulations dispensary offers physician-grade supplements — the same quality Dr. McCann trusts for patient recommendations. As a patient, you receive 15% off all orders.\n\nHow would you like to explore?");
+    this.addQuickReplies([
+      { label: '📦 See Curated Bundles', action: () => this.flowSupplementBundles() },
+      { label: 'Shop by Wellness Goal', action: () => this.flowSupplementGoals() }
+    ]);
+  }
+
+  async flowSupplementGoals() {
+    this.state = 'supplement_goals';
+    await this.addBotMessage("What wellness goal are you focused on?");
+    this.addQuickReplies([
+      { label: 'Better Sleep', action: () => this.flowSupplementRec('sleep') },
+      { label: 'Stress Support', action: () => this.flowSupplementRec('stress') },
+      { label: 'Energy & Focus', action: () => this.flowSupplementRec('energy') },
+      { label: 'Gut Health', action: () => this.flowSupplementRec('gut') },
+      { label: 'Immune Support', action: () => this.flowSupplementRec('immune') },
+      { label: 'General Wellness', action: () => this.flowSupplementRec('general') }
+    ]);
+  }
+
+  async flowSupplementBundles() {
+    this.state = 'supplement_bundles';
+    await this.addBotMessage("Dr. McCann has curated these supplement bundles for specific goals. Which interests you?");
+    this.addQuickReplies([
+      { label: 'Wellness Bundle', action: () => this.flowSupplementBundleRec('wellness') },
+      { label: 'Longevity Bundle', action: () => this.flowSupplementBundleRec('longevity') },
+      { label: 'Build Muscle', action: () => this.flowSupplementBundleRec('muscle') },
+      { label: 'Weight Management', action: () => this.flowSupplementBundleRec('weight') },
+      { label: 'Body Composition', action: () => this.flowSupplementBundleRec('bodycomp') },
+      { label: '← Shop by Goal Instead', action: () => this.flowSupplementGoals() }
+    ]);
+  }
+
+  async flowSupplementBundleRec(bundleKey) {
+    const bundle = SUPPLEMENT_BUNDLES[bundleKey];
+    if (!bundle) return;
+
+    this.state = 'supplement_bundle_recs';
+    await this.addBotMessage(bundle.message);
+
+    for (const supp of bundle.products) {
+      await this.delay(200);
+      this.addSupplementCard(supp);
+    }
+
+    await this.delay(300);
+    await this.addBotMessage(bundle.outro + '\n\nAs a patient of Artemis Modern Aesthetics, you receive 15% off all orders through our dispensary.');
+
+    this.addDisclaimer('*These statements have not been evaluated by the FDA. Supplements are not intended to diagnose, treat, cure, or prevent any disease. For personalized medical advice, please consult with Dr. McCann.');
+
+    await this.delay(200);
+    this.addQuickReplies([
+      { label: 'Visit Dispensary →', url: DISPENSARY_URL, cta: true },
+      { label: 'See Other Bundles', action: () => this.flowSupplementBundles() },
+      { label: 'Skincare Products', action: () => this.flowSkincareConcern() },
+      { label: 'Request a Consultation', action: () => this.flowConsultation() }
+    ]);
+  }
+
+  async flowSupplementRec(goal) {
+    this.context.supplementGoal = goal;
+    this.state = 'supplement_recs';
+    const data = SUPPLEMENTS[goal];
+
+    await this.addBotMessage(`${data.goal.charAt(0).toUpperCase() + data.goal.slice(1)} is so important. Here are supplements commonly used to support ${data.goal}:`);
+
+    for (const supp of data.products) {
+      await this.delay(200);
+      this.addSupplementCard(supp);
+    }
+
+    await this.delay(300);
+    await this.addBotMessage(data.outro + '\n\nTo access our full dispensary with Dr. McCann\'s recommendations:');
+
+    this.addDisclaimer('*These statements have not been evaluated by the FDA. Supplements are not intended to diagnose, treat, cure, or prevent any disease. For personalized medical advice, please consult with Dr. McCann.');
+
+    await this.delay(200);
+    this.addQuickReplies([
+      { label: 'Visit Our Dispensary →', url: DISPENSARY_URL, cta: true },
+      { label: 'Learn About Another Goal', action: () => this.flowSupplements() },
+      { label: 'Skincare Products', action: () => this.flowSkincareConcern() },
+      { label: 'Talk to Dr. McCann', action: () => this.flowConsultation() }
+    ]);
+  }
+
+  // ----- CONSULTATION FLOW -----
+  async flowConsultation() {
+    this.state = 'consultation';
+    await this.addBotMessage("Dr. McCann offers personalized consultations for skincare assessment, injectable treatments, body contouring, and wellness planning.\n\nAs a physician-only practice, you'll be working directly with Dr. McCann — not a technician. Would you like to:");
+    this.addQuickReplies([
+      { label: 'Request a Consultation →', url: 'https://www.artemis-medspa.com/contact', cta: true },
+      { label: 'Call Our Office', action: () => this.flowCallOffice() },
+      { label: 'Send Us a Message', action: () => this.flowLeadCapture() },
+      { label: '← Back to Main Menu', action: () => this.flowRestart() }
+    ]);
+  }
+
+  async flowCallOffice() {
+    await this.addBotMessage("You can reach Artemis Modern Aesthetics at our Medford, NJ office at 417 Stokes Rd.\n\nDr. McCann sees patients by consultation only. For the best experience, mention that you chatted with our online guide so we can have your interests on file.");
+    this.addQuickReplies([
+      { label: 'Contact Us Online →', url: 'https://www.artemis-medspa.com/contact', cta: true },
+      { label: 'Send a Message', action: () => this.flowLeadCapture() },
+      { label: '← Back to Main Menu', action: () => this.flowRestart() }
+    ]);
+  }
+
+  // ----- FAQ FLOW -----
+  async flowFAQ() {
+    this.state = 'faq';
+    await this.addBotMessage("I can help with common questions. What would you like to know?");
+    this.addQuickReplies([
+      { label: 'Shipping & Returns', action: () => this.showFAQAnswer('shipping') },
+      { label: 'Product Ingredients', action: () => this.showFAQAnswer('ingredients') },
+      { label: 'About Dr. McCann', action: () => this.showFAQAnswer('about') },
+      { label: 'Office Hours & Location', action: () => this.showFAQAnswer('hours') }
+    ]);
+  }
+
+  async showFAQAnswer(key) {
+    const faq = FAQ_CONTENT[key];
+    await this.addBotMessage(faq.message);
+    await this.delay(200);
+    await this.addBotMessage("Is there anything else I can help with?");
+    this.addQuickReplies([
+      { label: 'Skincare Products', action: () => this.flowSkincareConcern() },
+      { label: 'Supplements & Wellness', action: () => this.flowSupplements() },
+      { label: 'Request a Consultation', action: () => this.flowConsultation() },
+      { label: 'Another Question', action: () => this.flowFAQ() }
+    ]);
+  }
+
+  // ----- LEAD CAPTURE FLOW -----
+  async flowLeadCapture() {
+    this.state = 'lead_name';
+    this.inputMode = 'name';
+    await this.addBotMessage("I'd love to send you a personalized recommendation summary. What's your first name?");
+    this.enableInput('Enter your first name...');
+  }
+
+  async flowLeadEmail() {
+    this.state = 'lead_email';
+    this.inputMode = 'email';
+    await this.addBotMessage(`Thanks, ${this.userName}! And what's the best email to reach you?`);
+    this.enableInput('Enter your email address...');
+  }
+
+  async flowLeadComplete() {
+    this.state = 'lead_complete';
+    this.inputMode = null;
+    this.disableInput();
+    await this.addBotMessage(`Perfect — I'll send your personalized recommendations to ${this.userEmail}. In the meantime, feel free to browse our shop or request a consultation.`);
+    this.addQuickReplies([
+      { label: 'Shop PCA Skincare →', url: SHOP_URL, cta: true },
+      { label: 'Request Consultation →', url: 'https://www.artemis-medspa.com/contact', cta: true },
+      { label: 'Visit Supplement Dispensary →', url: DISPENSARY_URL },
+      { label: '← Start Over', action: () => this.flowRestart() }
+    ]);
+  }
+
+  // ----- TEXT INPUT HANDLER -----
+  handleTextInput() {
+    const text = this.input.value.trim();
+    if (!text) return;
+
+    this.addUserMessage(text);
+    this.input.value = '';
+
+    if (this.inputMode === 'name') {
+      this.userName = text;
+      this.disableInput();
+      this.flowLeadEmail();
+    } else if (this.inputMode === 'email') {
+      this.userEmail = text;
+      this.disableInput();
+      this.flowLeadComplete();
+    } else {
+      // Free text — guide them back
+      this.disableInput();
+      this.handleFreeText(text);
+    }
+  }
+
+  async handleFreeText(text) {
+    const lower = text.toLowerCase();
+    
+    // Try to route based on keywords
+    if (lower.includes('neck') || lower.includes('decollete') || lower.includes('d\u00e9collet\u00e9') || lower.includes('chest')) {
+      await this.addBotMessage("Let me show you our neck and d\u00e9collet\u00e9 protocol.");
+      this.flowBundleRec('neck');
+    } else if (lower.includes('melasma') || lower.includes('pigment')) {
+      await this.addBotMessage("Let me show you our pigment correction protocol.");
+      this.flowSkinChoice('discoloration');
+    } else if (lower.includes('bundle') || lower.includes('routine') || lower.includes('protocol')) {
+      await this.addBotMessage("Let me help you find the right routine.");
+      this.flowSkincareConcern();
+    } else if (lower.includes('muscle') || lower.includes('creatine') || lower.includes('protein') || lower.includes('workout')) {
+      await this.addBotMessage("Let me show you our Build Muscle supplement bundle.");
+      this.flowSupplementBundleRec('muscle');
+    } else if (lower.includes('weight') || lower.includes('metabolism') || lower.includes('fat')) {
+      await this.addBotMessage("Let me show you our Weight Management supplement bundle.");
+      this.flowSupplementBundleRec('weight');
+    } else if (lower.includes('longevity') || lower.includes('aging supplement') || lower.includes('nad') || lower.includes('nmn')) {
+      await this.addBotMessage("Let me show you our Longevity supplement bundle.");
+      this.flowSupplementBundleRec('longevity');
+    } else if (lower.includes('acne') || lower.includes('breakout') || lower.includes('pimple')) {
+      await this.addBotMessage("It sounds like you're interested in acne solutions. Let me help you find the right products.");
+      this.flowSkinChoice('acne');
+    } else if (lower.includes('wrinkle') || lower.includes('aging') || lower.includes('fine line') || lower.includes('anti-aging')) {
+      await this.addBotMessage("Let me help you with anti-aging skincare solutions.");
+      this.flowSkinChoice('aging');
+    } else if (lower.includes('dark spot') || lower.includes('discoloration') || lower.includes('hyperpig') || lower.includes('bright')) {
+      await this.addBotMessage("Let me help with brightening and discoloration products.");
+      this.flowSkinChoice('discoloration');
+    } else if (lower.includes('red') || lower.includes('sensitive') || lower.includes('rosacea') || lower.includes('irritat')) {
+      await this.addBotMessage("Let me help you find products for redness and sensitivity.");
+      this.flowSkinChoice('redness');
+    } else if (lower.includes('dry') || lower.includes('hydrat') || lower.includes('moisture')) {
+      await this.addBotMessage("Let me help with hydration and moisture solutions.");
+      this.flowSkinChoice('dryness');
+    } else if (lower.includes('pore') || lower.includes('texture') || lower.includes('rough') || lower.includes('smooth')) {
+      await this.addBotMessage("Let me help you with texture and pore refinement.");
+      this.flowSkinType('texture');
+    } else if (lower.includes('supplement') || lower.includes('vitamin') || lower.includes('sleep') || lower.includes('wellness')) {
+      await this.addBotMessage("Let me show you our wellness supplement options.");
+      this.flowSupplements();
+    } else if (lower.includes('consult') || lower.includes('text us') || lower.includes('doctor')) {
+      this.flowConsultation();
+    } else {
+      await this.addBotMessage("I appreciate your message! To help you best, could you select one of the options below?");
+      this.addQuickReplies([
+        { label: 'Skincare Products', action: () => this.flowSkincareConcern() },
+        { label: 'Supplements & Wellness', action: () => this.flowSupplements() },
+        { label: 'Request a Consultation', action: () => this.flowConsultation() },
+        { label: 'I Have a Question', action: () => this.flowFAQ() }
+      ]);
+    }
+  }
+
+  // ----- RESTART -----
+  async flowRestart() {
+    await this.addBotMessage("Of course! What else can I help you with?");
+    this.addQuickReplies([
+      { label: 'Skincare Products', action: () => this.flowSkincareConcern() },
+      { label: 'Supplements & Wellness', action: () => this.flowSupplements() },
+      { label: 'Request a Consultation', action: () => this.flowConsultation() },
+      { label: 'I Have a Question', action: () => this.flowFAQ() }
+    ]);
+    this.disableInput();
+  }
+
+  // Utility
+  delay(ms) {
+    return new Promise(r => setTimeout(r, ms));
+  }
+}
+
+// Initialize chatbot
+document.addEventListener('DOMContentLoaded', () => {
+  new ArtemisChatbot();
+});
+</script>
+
+</body>
+</html>
