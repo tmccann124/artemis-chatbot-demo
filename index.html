@@ -2014,16 +2014,17 @@ class ArtemisChatbot {
     await this.addBotMessage("Dr. McCann offers personalized consultations for skincare assessment, injectable treatments, body contouring, and wellness planning.\n\nAs a physician-only practice, you'll be working directly with Dr. McCann — not a technician. Would you like to:");
     this.addQuickReplies([
       { label: 'Request a Consultation →', url: 'https://www.artemis-medspa.com/contact', cta: true },
-      { label: 'Text Us', action: () => this.flowCallOffice() },
+      { label: 'Text Us', action: () => this.flowTextUs() },
       { label: 'Send Us a Message', action: () => this.flowLeadCapture() },
       { label: '← Back to Main Menu', action: () => this.flowRestart() }
     ]);
   }
 
-  async flowCallOffice() {
-    await this.addBotMessage("You can reach Artemis Modern Aesthetics at our Medford, NJ office at 417 Stokes Rd.\n\nDr. McCann sees patients by consultation only. For the best experience, mention that you chatted with our online guide so we can have your interests on file.");
+  async flowTextUs() {
+    await this.addBotMessage("You can text us directly at (833) 387-2996. We're located at 417 Stokes Rd, Medford, NJ.\n\nDr. McCann sees patients by consultation only. For the best experience, mention that you chatted with our online guide so we can have your interests on file.");
     this.addQuickReplies([
-      { label: 'Contact Us Online →', url: 'https://www.artemis-medspa.com/contact', cta: true },
+      { label: 'Text Us Now →', url: 'sms:8333872996', cta: true },
+      { label: 'Contact Us Online →', url: 'https://www.artemis-medspa.com/contact' },
       { label: 'Send a Message', action: () => this.flowLeadCapture() },
       { label: '← Back to Main Menu', action: () => this.flowRestart() }
     ]);
