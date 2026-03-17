@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1B2A4A"/>
+  <circle cx="600" cy="240" r="120" stroke="#C4A265" stroke-width="5" fill="none"/>
+  <path d="M600 140 L560 330 L576 330 L586 300 L614 300 L624 330 L640 330 Z M594 280 L600 240 L606 280 Z" fill="#C4A265"/>
+  <path d="M566 348 C566 348 583 362 600 362 C617 362 634 348 634 348" stroke="#C4A265" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <text x="600" y="440" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="52" fill="#C4A265">Ask Artemis</text>
+  <text x="600" y="485" text-anchor="middle" font-family="sans-serif" font-weight="300" font-size="24" fill="#8899AA">Artemis Modern Aesthetics · Medford, NJ</text>
+</svg>
