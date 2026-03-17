@@ -1427,42 +1427,43 @@ const PCA_BUNDLES = {
   'dry_mature': {
     name: 'Dry / Mature Skin Bundle',
     goal: 'Barrier repair, hydration, and anti-aging support',
-    products: ['creamy_cleanser', 'hydrating_serum', 'ce_advanced', 'collagen_hydrator', 'hydrator_spf'],
+    products: ['creamy_cleanser', 'hydrating_serum', 'ce_advanced', 'hydrator_spf'],
     optional: [{ key: 'ha_mask', reason: 'Add the Hyaluronic Acid Overnight Mask for a complete hydration protocol' }],
-    upgrade: { from: 'collagen_hydrator', to: 'hydraluxe', when: 'For very dry or mature skin, upgrade to HydraLuxe ($161) for deeper nourishment' },
+    upgrade: { from: 'hydrator_spf', to: 'hydraluxe', when: 'For very dry or mature skin, consider adding Collagen Hydrator ($63) or upgrading to HydraLuxe ($161) for deeper nourishment' },
     message: 'Here\'s a physician-curated routine for dry and mature skin \u2014 focused on barrier repair, deep hydration, and anti-aging support:',
-    summary: 'This 5-step protocol pairs hyaluronic acid hydration with antioxidant defense. All products are backed by clinical research.'
+    summary: 'This 4-step protocol pairs hyaluronic acid hydration with antioxidant defense. All products are backed by clinical research.'
   },
   'acne': {
     name: 'Oily / Acne-Prone Skin Bundle',
     goal: 'Decrease breakouts and oil while preserving barrier',
-    products: ['bpo_cleanser', 'acne_gel', 'clearskin', 'intensive_clarity', 'sheer_tint_spf'],
+    products: ['bpo_cleanser', 'acne_gel', 'clearskin', 'sheer_tint_spf'],
+    note: 'For persistent breakouts, ask Dr. McCann about adding Intensive Clarity Boost for enhanced nighttime retinoid support.',
     message: 'Here\'s a physician-curated routine for oily, acne-prone skin \u2014 targeting breakouts while protecting your skin barrier:',
     summary: 'BPO in the morning, retinol at night \u2014 this is the evidence-based approach to acne management. The tinted SPF increases daily compliance.'
   },
   'pigment': {
     name: 'Pigment / Melasma Bundle',
     goal: 'Even tone and treat dyschromia \u2014 pairs with in-office peel/IPL protocols',
-    products: ['facial_wash', 'nutrient_toner', 'vb3_serum', 'pigment_gel_pro', 'ce_advanced', 'intensive_brightening', 'sheer_tint_spf'],
-    note: 'Alternative: Pigment Gel HQ Free ($96) available for patients who prefer a hydroquinone-free option.',
-    message: 'Here\'s a comprehensive pigment-correction protocol \u2014 this pairs beautifully with in-office peel or IPL treatments:',
+    products: ['vb3_serum', 'pigment_gel_pro', 'ce_advanced', 'sheer_tint_spf'],
+    note: 'Alternative: Pigment Gel HQ Free ($96) available for patients who prefer a hydroquinone-free option. For an enhanced protocol, ask Dr. McCann about adding Intensive Brightening Treatment.',
+    message: 'Here\'s a focused pigment-correction protocol \u2014 this pairs beautifully with in-office peel or IPL treatments:',
     summary: 'Niacinamide (B3) and vitamin C work during the day while retinol works overnight. Daily SPF is critical \u2014 rain or shine.\n\nFor enhanced results, consider requesting a consultation to discuss in-office peel or IPL treatments.',
     crossSell: true
   },
   'photoaging': {
     name: 'Photoaging / Prejuvenation Bundle',
     goal: 'Prevent and treat fine lines, texture, and early laxity',
-    products: ['facial_wash', 'nutrient_toner', 'ce_advanced', 'exlinea_pro', 'pro_max', 'collagen_hydrator', 'hydrator_spf'],
+    products: ['ce_advanced', 'exlinea_pro', 'collagen_hydrator', 'hydrator_spf'],
     upgrade: { from: 'collagen_hydrator', to: 'hydraluxe', when: 'For drier skin, upgrade to HydraLuxe ($161)' },
-    message: 'Here\'s our premium anti-aging protocol \u2014 the most comprehensive routine for fine lines, texture, and firmness:',
-    summary: 'Start with C&E Advanced + ExLinea Pro + SPF as your core, then layer in Pro-Max Age Renewal and night cream for the full protocol.\n\nThe ExLinea Pro Peptide Serum also pairs beautifully with neurotoxin treatments.',
+    message: 'Here\'s our premium anti-aging protocol \u2014 the core routine for fine lines, texture, and firmness:',
+    summary: 'C&E Advanced + ExLinea Pro + SPF is your powerful core. For patients ready for the next level, ask Dr. McCann about adding Pro-Max Age Renewal for lift and firming.\n\nThe ExLinea Pro Peptide Serum also pairs beautifully with neurotoxin treatments.',
     crossSell: true
   },
   'rosacea': {
     name: 'Rosacea / Reactive Skin Bundle',
     goal: 'Calm, protect barrier, minimize flushing triggers',
-    products: ['facial_wash', 'hydrating_serum', 'collagen_hydrator', 'vb3_serum', 'hydrator_spf'],
-    note: 'Note: Introduce the B3 Brightening Serum gradually and titrate up \u2014 niacinamide benefits barrier and redness but some reactive skin needs time to adjust.',
+    products: ['facial_wash', 'hydrating_serum', 'collagen_hydrator', 'hydrator_spf'],
+    note: 'Once your skin tolerates this routine well, ask Dr. McCann about adding B3 Brightening Serum \u2014 niacinamide benefits barrier and redness but some reactive skin needs time to adjust.',
     message: 'Here\'s a calming protocol for rosacea and reactive skin \u2014 gentle products that protect your barrier without triggering flares:',
     summary: 'This routine avoids BPO and salicylic acid systems. If you have active rosacea, we recommend reaching out to Dr. McCann for a personalized assessment.\n\nThis also works beautifully as a post-procedure protocol after IPL or laser redness treatments.',
     crossSell: true
@@ -1470,7 +1471,7 @@ const PCA_BUNDLES = {
   'neck': {
     name: 'Neck & D\u00e9collet\u00e9 Bundle',
     goal: 'Target tech-neck lines and chest photodamage',
-    products: ['facial_wash', 'nutrient_toner', 'ce_advanced', 'perfecting_neck', 'hydrator_spf'],
+    products: ['ce_advanced', 'perfecting_neck', 'hydrator_spf', 'facial_wash'],
     message: 'Here\'s a targeted protocol for neck and chest concerns \u2014 tech-neck lines and sun damage respond well to this approach:',
     summary: 'The Perfecting Neck & D\u00e9collet\u00e9 cream is specifically designed for this delicate area. Apply C&E Advanced to neck and chest each morning, followed by SPF.\n\nFor best results, pair with in-office treatments.',
     crossSell: true
@@ -1533,11 +1534,10 @@ const SUPPLEMENT_BUNDLES = {
       { name: 'PureLean Nutrients (180 caps)', desc: 'Multivitamin with green tea and pterostilbene for healthy carbohydrate metabolism and lipid utilization.' },
       { name: 'CLA 1,000 mg (180 softgels)', desc: 'Supports favorable body composition changes.' },
       { name: 'Creatine (315g powder)', desc: 'Supports lean muscle mass when combined with resistance training.' },
-      { name: 'EPA/DHA Essentials (90 softgels)', desc: 'Supports cardiovascular health and healthy inflammatory response during training.' },
-      { name: 'Athletic Pure Pack (daily packets)', desc: 'Comprehensive packets with Athletic Nutrients, CoQ10, EPA/DHA, l-glutamine, and Kre-Alkalyn for energy and recovery.' }
+      { name: 'EPA/DHA Essentials (90 softgels)', desc: 'Supports cardiovascular health and healthy inflammatory response during training.' }
     ],
     message: 'Here\'s our Optimal Body Composition Bundle \u2014 ideal for aesthetics patients focused on metabolic efficiency:',
-    outro: 'This bundle targets fat utilization and lean mass support alongside your training program.'
+    outro: 'This bundle targets fat utilization and lean mass support alongside your training program. For comprehensive training support, ask Dr. McCann about the Athletic Pure Pack.'
   }
 };
 
