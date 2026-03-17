@@ -3,9 +3,9 @@
 
 const CACHE_NAME = 'ask-artemis-v1';
 const ASSETS = [
-  '/artemis-chatbot-demo/chat.html',
-  '/artemis-chatbot-demo/icon-192.png',
-  '/artemis-chatbot-demo/icon-512.png'
+  '/chat.html',
+  '/icon-192.png',
+  '/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
