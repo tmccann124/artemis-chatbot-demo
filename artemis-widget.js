@@ -1,39 +1,36 @@
 // ===================================================================
-// ARTEMIS CHATBOT WIDGET — Embeddable Version
-// Add this script to any page to display the Ask Artemis chatbot
-// Usage: <script src="https://tmccann124.github.io/artemis-chatbot-demo/artemis-widget.js"></script>
+// ARTEMIS CHATBOT WIDGET — Self-contained embeddable version
+// Usage: <script src="artemis-widget.js"></script>
 // ===================================================================
-
 (function() {
-  "use strict";
-  
-  // Prevent double-loading
-  if (window.__artemisWidgetLoaded) return;
-  window.__artemisWidgetLoaded = true;
+  'use strict';
 
-  // 1. Load Google Fonts (Inter)
-  if (!document.querySelector('link[href*="fonts.googleapis.com/css2?family=Inter"]')) {
-    var preconnect1 = document.createElement('link');
-    preconnect1.rel = 'preconnect';
-    preconnect1.href = 'https://fonts.googleapis.com';
-    document.head.appendChild(preconnect1);
+  // Prevent double-initialization
+  if (window.__artemisChatbotLoaded) return;
+  window.__artemisChatbotLoaded = true;
 
-    var preconnect2 = document.createElement('link');
-    preconnect2.rel = 'preconnect';
-    preconnect2.href = 'https://fonts.gstatic.com';
-    preconnect2.crossOrigin = 'anonymous';
-    document.head.appendChild(preconnect2);
+  // ===== LOAD FONTS =====
+  var link1 = document.createElement('link');
+  link1.rel = 'preconnect';
+  link1.href = 'https://fonts.googleapis.com';
+  document.head.appendChild(link1);
 
-    var fontLink = document.createElement('link');
-    fontLink.rel = 'stylesheet';
-    fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
-    document.head.appendChild(fontLink);
-  }
+  var link2 = document.createElement('link');
+  link2.rel = 'preconnect';
+  link2.href = 'https://fonts.gstatic.com';
+  link2.crossOrigin = 'anonymous';
+  document.head.appendChild(link2);
 
-  // 2. Inject CSS
+  var link3 = document.createElement('link');
+  link3.rel = 'stylesheet';
+  link3.href = "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap";
+  document.head.appendChild(link3);
+
+  // ===== INJECT CSS =====
   var style = document.createElement('style');
-  style.id = 'artemis-widget-styles';
-  style.textContent = `
+  style.textContent = `/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
   --navy: #1B2A4A;
   --navy-light: #2A3D66;
@@ -64,9 +61,359 @@
   --shadow-xl: 0 16px 48px rgba(27,42,74,0.2);
 }
 
-/* Widget button/link resets */
-#artemisWidgetContainer a { color: inherit; text-decoration: none; }
-#artemisWidgetContainer button { cursor: pointer; border: none; background: none; font-family: var(--font); }
+body {
+  font-family: var(--font);
+  color: var(--gray-800);
+  background: var(--gray-50);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ===== LANDING PAGE ===== */
+.landing-header {
+  background: var(--navy);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.logo-text span {
+  color: var(--gold);
+  font-weight: 400;
+  font-size: 12px;
+  display: block;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: -2px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.header-nav a {
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.header-nav a:hover { color: var(--gold); }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #354B75 100%);
+  padding: 100px 24px 120px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,162,101,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(42,123,136,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(196,162,101,0.15);
+  border: 1px solid rgba(196,162,101,0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gold-light);
+  margin-bottom: 28px;
+  letter-spacing: 0.02em;
+}
+
+.hero-badge svg { width: 14px; height: 14px; }
+
+.hero h1 {
+  color: var(--white);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.hero p {
+  color: rgba(255,255,255,0.7);
+  font-size: clamp(16px, 2vw, 19px);
+  max-width: 540px;
+  margin: 0 auto 36px;
+  line-height: 1.65;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-outline:hover { border-color: var(--gold); background: rgba(196,162,101,0.08); }
+
+/* DEMO NOTICE */
+.demo-notice {
+  background: var(--teal-light);
+  border: 1px solid rgba(42,123,136,0.2);
+  padding: 14px 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--teal-dark);
+  font-weight: 500;
+}
+
+.demo-notice strong { color: var(--teal); }
+
+/* PRODUCTS SECTION */
+.products-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  color: var(--gray-500);
+  font-size: 16px;
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-200);
+  padding: 24px;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.product-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.product-card .price {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+
+.product-card p {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.product-card-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s;
+}
+
+.product-card-cta:hover { gap: 8px; }
+
+/* FEATURES STRIP */
+.features-strip {
+  background: var(--navy);
+  padding: 60px 24px;
+}
+
+.features-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+
+.feature-item {
+  text-align: center;
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(196,162,101,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.feature-item h4 {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.feature-item p {
+  color: rgba(255,255,255,0.55);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* FOOTER */
+.landing-footer {
+  background: var(--gray-100);
+  border-top: 1px solid var(--gray-200);
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.landing-footer p {
+  font-size: 13px;
+  color: var(--gray-400);
+  margin-bottom: 6px;
+}
+
+.landing-footer a {
+  color: var(--gray-400);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.landing-footer a:hover { color: var(--teal); }
 
 /* ===== CHATBOT WIDGET ===== */
 
@@ -530,10 +877,18 @@
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 640px) {
+  .header-nav { display: none; }
 
+  .hero { padding: 60px 20px 80px; }
 
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; justify-content: center; }
 
+  .products-section { padding: 50px 16px; }
+  .product-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .product-card { padding: 16px; }
 
+  .features-inner { grid-template-columns: 1fr 1fr; gap: 20px; }
 
   .chat-window {
     bottom: 0;
@@ -562,15 +917,14 @@
 }
 
 @media (max-width: 400px) {
-}
-`;
+  .product-grid { grid-template-columns: 1fr; }
+}`;
   document.head.appendChild(style);
 
-  // 3. Inject HTML
+  // ===== INJECT HTML =====
   var container = document.createElement('div');
-  container.id = 'artemisWidgetContainer';
-  container.innerHTML = `<!-- ===== CHAT TOGGLE BUTTON ===== -->
-<button class="chat-toggle" id="chatToggle" aria-label="Artemis">
+  container.id = 'artemis-chat-widget';
+  container.innerHTML = `<button class="chat-toggle" id="chatToggle" aria-label="Artemis">
   <span class="chat-badge">1</span>
   <span class="chat-tooltip">Ask Artemis</span>
   <svg viewBox="0 0 28 28" fill="none">
@@ -615,12 +969,11 @@
   <div class="chat-footer">
     Powered by <strong>Artemis AI</strong> · <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Built with Perplexity</a>
   </div>
-</div>
-`;
+</div>`;
   document.body.appendChild(container);
 
-  // 4. Run chatbot engine
-  // ===================================================================
+  // ===== CHATBOT ENGINE =====
+// ===================================================================
 // ARTEMIS CHATBOT — CLINICAL CONCIERGE CONVERSATION ENGINE
 // All conversation flows are pre-built decision trees (no API calls)
 // Rebuilt per 4-path architecture specification
@@ -629,6 +982,7 @@
 const SHOP_URL = 'https://partners.pcaskin.com/artemis-medspa';
 const DISPENSARY_URL = 'https://patientdirect.pureencapsulationspro.com/patients/sign_up?practice_code=975630';
 const CONTACT_URL = 'https://www.artemis-medspa.com/contact';
+const HEALTHPASS_URL = 'https://www.tryhealthpass.com/pages/pricing?referrer=dbb9b2f6-819b-4577-b32a-12ad4ecc0349';
 
 // ===== PRODUCT DATABASE =====
 const PRODUCTS = {
@@ -1659,7 +2013,8 @@ class ArtemisChatbot {
       { label: 'I have a specific wellness goal', action: () => this.flowPath3_Goals() },
       { label: "Show me Dr. McCann's curated bundles", action: () => this.flowPath3_Bundles() },
       { label: 'What should I be taking?', action: () => this.flowPath3_GeneralRec() },
-      { label: 'How do supplements support my skin?', action: () => this.flowPath3_SkinConnection() }
+      { label: 'How do supplements support my skin?', action: () => this.flowPath3_SkinConnection() },
+      { label: '3D Body Scan & Risk Screening', action: () => this.flowHealthPass() }
     ]);
   }
 
@@ -1783,6 +2138,26 @@ class ArtemisChatbot {
   }
 
   // ===========================================================
+  // HEALTHPASS 3D BODY SCAN
+  // ===========================================================
+
+  async flowHealthPass() {
+    this.state = 'healthpass';
+    await this.addBotMessage("HealthPass is a preventative 3D body scan that goes far beyond the scale. In about 35 seconds, the Styku scanner captures over 100 body measurements and uses them to estimate your risk for 20+ chronic diseases \u2014 including diabetes, cardiovascular disease, and metabolic syndrome.\n\nAs a board-certified radiologist, Dr. McCann interprets your results in the context of your medical history \u2014 not just the numbers \u2014 and can order targeted bloodwork or start a prevention plan if your scan flags elevated risk.");
+    await this.delay(400);
+    await this.addBotMessage("What's included:\n\n\u2022 Full 3D body composition analysis (DEXA-correlated)\n\u2022 100+ biometrics including visceral fat, muscle balance, and trunk-to-leg ratio\n\u2022 20+ disease risk estimates based on published population data\n\u2022 In-person physician consultation with Dr. McCann\n\u2022 Mobile app access to track your results over time\n\nAvailable as a single scan ($149) or as part of an annual membership ($499/yr for 4 quarterly scans + a physician-reviewed blood test).");
+    await this.delay(400);
+    await this.addBotMessage("This is a screening and tracking tool \u2014 it identifies body-composition patterns associated with higher health risk so we can intervene early, before problems become diagnoses.\n\nArtemis is a founding HealthPass location, and we're located inside Physique Labs \u2014 so you can scan with a physician upstairs and train with performance coaches downstairs.\n\nWhat would you like to do?");
+    this.addQuickReplies([
+      { label: 'Order a HealthPass Scan', url: HEALTHPASS_URL, cta: true },
+      { label: 'Text Us to Schedule', url: 'sms:8333872996', cta: true },
+      { label: 'Tell me about skincare', action: () => this.flowPath1_ConcernSelect() },
+      { label: 'Explore supplements', action: () => this.flowPath3_Wellness() },
+      { label: '\u2190 Start over', action: () => this.flowRestart() }
+    ]);
+  }
+
+  // ===========================================================
   // PATH 4: TREATMENT GUIDANCE ("I'm considering a treatment")
   // ===========================================================
 
@@ -1832,6 +2207,7 @@ class ArtemisChatbot {
         text: "Body contouring treatments can help address stubborn areas that don't respond to diet and exercise. Dr. McCann integrates body composition analysis to help you understand your starting point and track measurable changes.\n\nAt Artemis, we believe aesthetics and wellness go hand in hand \u2014 treatments work best when supported by nutrition, movement, and physician-guided supplementation.\n\nAll treatments at Artemis are performed personally by Dr. McCann \u2014 never delegated to a technician.",
         exitOptions: [
           { label: 'Request a consultation', action: () => this.flowConsultation() },
+          { label: '3D Body Scan & Risk Screening', action: () => this.flowHealthPass() },
           { label: 'Explore wellness supplements', action: () => this.flowPath3_Wellness() },
           { label: 'Explore another treatment', action: () => this.flowPath4_TreatmentGuidance() },
           { label: '\u2190 Start over', action: () => this.flowRestart() }
@@ -1999,6 +2375,11 @@ class ArtemisChatbot {
       await this.addBotMessage("Let me help with that \u2014 let's start by understanding your skin.");
       this.flowPath1_Contraindication('texture');
     }
+    // HealthPass / body scan keywords
+    else if (lower.includes('body scan') || lower.includes('healthpass') || lower.includes('health pass') || lower.includes('body composition') || lower.includes('styku') || lower.includes('3d scan') || lower.includes('body fat') || lower.includes('disease risk')) {
+      await this.addBotMessage("Great question — let me tell you about our HealthPass 3D body scan.");
+      this.flowHealthPass();
+    }
     // Supplement/wellness keywords
     else if (lower.includes('supplement') || lower.includes('vitamin') || lower.includes('sleep') || lower.includes('wellness') || lower.includes('energy')) {
       await this.addBotMessage("I can help with wellness and supplements.");
@@ -2058,9 +2439,11 @@ class ArtemisChatbot {
   }
 }
 
-  // 5. Initialize
+  // ===== INITIALIZE =====
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => { new ArtemisChatbot(); });
+    document.addEventListener('DOMContentLoaded', function() {
+      new ArtemisChatbot();
+    });
   } else {
     new ArtemisChatbot();
   }

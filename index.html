@@ -1103,6 +1103,7 @@ img { max-width: 100%; display: block; }
 const SHOP_URL = 'https://partners.pcaskin.com/artemis-medspa';
 const DISPENSARY_URL = 'https://patientdirect.pureencapsulationspro.com/patients/sign_up?practice_code=975630';
 const CONTACT_URL = 'https://www.artemis-medspa.com/contact';
+const HEALTHPASS_URL = 'https://www.tryhealthpass.com/pages/pricing?referrer=dbb9b2f6-819b-4577-b32a-12ad4ecc0349';
 
 // ===== PRODUCT DATABASE =====
 const PRODUCTS = {
@@ -2133,7 +2134,8 @@ class ArtemisChatbot {
       { label: 'I have a specific wellness goal', action: () => this.flowPath3_Goals() },
       { label: "Show me Dr. McCann's curated bundles", action: () => this.flowPath3_Bundles() },
       { label: 'What should I be taking?', action: () => this.flowPath3_GeneralRec() },
-      { label: 'How do supplements support my skin?', action: () => this.flowPath3_SkinConnection() }
+      { label: 'How do supplements support my skin?', action: () => this.flowPath3_SkinConnection() },
+      { label: '3D Body Scan & Risk Screening', action: () => this.flowHealthPass() }
     ]);
   }
 
@@ -2257,6 +2259,26 @@ class ArtemisChatbot {
   }
 
   // ===========================================================
+  // HEALTHPASS 3D BODY SCAN
+  // ===========================================================
+
+  async flowHealthPass() {
+    this.state = 'healthpass';
+    await this.addBotMessage("HealthPass is a preventative 3D body scan that goes far beyond the scale. In about 35 seconds, the Styku scanner captures over 100 body measurements and uses them to estimate your risk for 20+ chronic diseases \u2014 including diabetes, cardiovascular disease, and metabolic syndrome.\n\nAs a board-certified radiologist, Dr. McCann interprets your results in the context of your medical history \u2014 not just the numbers \u2014 and can order targeted bloodwork or start a prevention plan if your scan flags elevated risk.");
+    await this.delay(400);
+    await this.addBotMessage("What's included:\n\n\u2022 Full 3D body composition analysis (DEXA-correlated)\n\u2022 100+ biometrics including visceral fat, muscle balance, and trunk-to-leg ratio\n\u2022 20+ disease risk estimates based on published population data\n\u2022 In-person physician consultation with Dr. McCann\n\u2022 Mobile app access to track your results over time\n\nAvailable as a single scan ($149) or as part of an annual membership ($499/yr for 4 quarterly scans + a physician-reviewed blood test).");
+    await this.delay(400);
+    await this.addBotMessage("This is a screening and tracking tool \u2014 it identifies body-composition patterns associated with higher health risk so we can intervene early, before problems become diagnoses.\n\nArtemis is a founding HealthPass location, and we're located inside Physique Labs \u2014 so you can scan with a physician upstairs and train with performance coaches downstairs.\n\nWhat would you like to do?");
+    this.addQuickReplies([
+      { label: 'Order a HealthPass Scan', url: HEALTHPASS_URL, cta: true },
+      { label: 'Text Us to Schedule', url: 'sms:8333872996', cta: true },
+      { label: 'Tell me about skincare', action: () => this.flowPath1_ConcernSelect() },
+      { label: 'Explore supplements', action: () => this.flowPath3_Wellness() },
+      { label: '\u2190 Start over', action: () => this.flowRestart() }
+    ]);
+  }
+
+  // ===========================================================
   // PATH 4: TREATMENT GUIDANCE ("I'm considering a treatment")
   // ===========================================================
 
@@ -2306,6 +2328,7 @@ class ArtemisChatbot {
         text: "Body contouring treatments can help address stubborn areas that don't respond to diet and exercise. Dr. McCann integrates body composition analysis to help you understand your starting point and track measurable changes.\n\nAt Artemis, we believe aesthetics and wellness go hand in hand \u2014 treatments work best when supported by nutrition, movement, and physician-guided supplementation.\n\nAll treatments at Artemis are performed personally by Dr. McCann \u2014 never delegated to a technician.",
         exitOptions: [
           { label: 'Request a consultation', action: () => this.flowConsultation() },
+          { label: '3D Body Scan & Risk Screening', action: () => this.flowHealthPass() },
           { label: 'Explore wellness supplements', action: () => this.flowPath3_Wellness() },
           { label: 'Explore another treatment', action: () => this.flowPath4_TreatmentGuidance() },
           { label: '\u2190 Start over', action: () => this.flowRestart() }
@@ -2472,6 +2495,11 @@ class ArtemisChatbot {
     else if (lower.includes('pore') || lower.includes('texture') || lower.includes('rough') || lower.includes('smooth')) {
       await this.addBotMessage("Let me help with that \u2014 let's start by understanding your skin.");
       this.flowPath1_Contraindication('texture');
+    }
+    // HealthPass / body scan keywords
+    else if (lower.includes('body scan') || lower.includes('healthpass') || lower.includes('health pass') || lower.includes('body composition') || lower.includes('styku') || lower.includes('3d scan') || lower.includes('body fat') || lower.includes('disease risk')) {
+      await this.addBotMessage("Great question — let me tell you about our HealthPass 3D body scan.");
+      this.flowHealthPass();
     }
     // Supplement/wellness keywords
     else if (lower.includes('supplement') || lower.includes('vitamin') || lower.includes('sleep') || lower.includes('wellness') || lower.includes('energy')) {
