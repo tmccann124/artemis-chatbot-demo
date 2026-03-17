@@ -1794,7 +1794,7 @@ class ArtemisChatbot {
 
   // ----- WELCOME / MAIN MENU (5-option) -----
   async showWelcome() {
-    await this.addBotMessage("Welcome to Ask Artemis \u2014 your personal concierge for skincare, wellness, and aesthetic guidance at Artemis Modern Aesthetics.\n\nEvery recommendation here is physician-curated by Dr. McCann and grounded in clinical evidence. I can help you understand your skin, build a routine, explore treatments, or find the right supplements.\n\nHow can I help you today?");
+    await this.addBotMessage("Ask Artemis \u2014 your personal concierge for skincare, wellness, and aesthetic guidance at Artemis Modern Aesthetics.\n\nEvery recommendation here is physician-curated by Dr. McCann and grounded in clinical evidence. I can help you understand your skin, build a routine, explore treatments, or find the right supplements.\n\nHow can I help you today?");
     this.addQuickReplies([
       { label: 'I want to improve my skin', action: () => this.flowPath1_ConcernSelect() },
       { label: 'Help me build or refine my routine', action: () => this.flowPath2_RoutineBuilder() },
