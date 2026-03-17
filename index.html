@@ -2014,7 +2014,7 @@ class ArtemisChatbot {
     await this.addBotMessage("Dr. McCann offers personalized consultations for skincare assessment, injectable treatments, body contouring, and wellness planning.\n\nAs a physician-only practice, you'll be working directly with Dr. McCann — not a technician. Would you like to:");
     this.addQuickReplies([
       { label: 'Request a Consultation →', url: 'https://www.artemis-medspa.com/contact', cta: true },
-      { label: 'Call Our Office', action: () => this.flowCallOffice() },
+      { label: 'Text Us', action: () => this.flowCallOffice() },
       { label: 'Send Us a Message', action: () => this.flowLeadCapture() },
       { label: '← Back to Main Menu', action: () => this.flowRestart() }
     ]);
